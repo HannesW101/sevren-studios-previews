@@ -46,10 +46,10 @@
   .hero-logo-wrap { opacity: 0; transform: translateY(16px) scale(0.98); animation: settle 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; animation-delay: 0.2s; }
   @keyframes settle { to { opacity: 1; transform: none; } }
 
-  /* ===== Pipe-run flow: a pressure pulse travels the pipe when it scrolls into view ===== */
-  .pipe-divider .flow { stroke-dasharray: 90 700; stroke-dashoffset: 790; opacity: 0; }
-  .pipe-divider.in-view .flow { animation: flow-pulse 1.6s ease-out forwards; }
-  @keyframes flow-pulse { 0% { stroke-dashoffset: 790; opacity: 0.9; } 90% { opacity: 0.9; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+  /* ===== Pipe-run flow: water runs continuously once the pipe scrolls into view ===== */
+  .pipe-divider .flow { stroke-dasharray: 22 34; stroke-dashoffset: 0; opacity: 0; }
+  .pipe-divider.in-view .flow { opacity: 0.85; animation: flow-run 1.4s linear infinite; }
+  @keyframes flow-run { to { stroke-dashoffset: -56; } }
 
   .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.02em; text-transform: uppercase; border: 1.5px solid transparent; border-radius: var(--radius); cursor: pointer; transition: transform 0.15s ease, background 0.15s ease; text-decoration: none; }
   .btn-primary { background: var(--navy-800); color: var(--white); }
