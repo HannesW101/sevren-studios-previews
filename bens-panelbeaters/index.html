@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ben's Panelbeaters | SAMBRA Approved Panel Beaters, Pretoria Central</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink-900: #14171c;
+    --ink-800: #1d2128;
+    --ink-600: #4a5262;
+    --ink-200: #dde1e6;
+    --ink-50: #f7f8fa;
+    --white: #ffffff;
+    --accent-500: #c73e2e;
+    --accent-600: #a8321f;
+    --accent-100: #fbe6e2;
+    --success: #1f8a5f;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --max-width: 1140px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--white); color: var(--ink-800); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Manrope', sans-serif; font-weight: 800; line-height: 1.15; margin: 0 0 0.5em; color: var(--ink-900); }
+  p { margin: 0 0 1em; color: var(--ink-600); }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: var(--radius-sm); font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.95rem; border: 1.5px solid transparent; cursor: pointer; }
+  .btn-primary { background: var(--accent-500); color: white; }
+  .btn-ghost { background: transparent; color: var(--ink-900); border-color: var(--ink-200); }
+
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ink-200); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.25rem; }
+  .logo span { color: var(--accent-500); }
+  .main-nav { display: flex; align-items: center; gap: 28px; }
+  .main-nav a { font-size: 0.92rem; font-weight: 600; color: var(--ink-600); }
+  .nav-cta { background: var(--accent-500); color: white !important; padding: 10px 20px; border-radius: var(--radius-sm); }
+
+  .hero { padding: 80px 0 64px; background: radial-gradient(circle at 85% 0%, var(--accent-100), transparent 55%), var(--ink-50); }
+  .hero-inner { max-width: 680px; }
+  .eyebrow { display: inline-flex; gap: 8px; align-items: center; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent-500); margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; }
+  .hero-sub { font-size: 1.1rem; max-width: 560px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin: 28px 0 24px; }
+  .badges { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.85rem; font-weight: 700; color: var(--ink-600); }
+  .badges li { list-style: none; display: flex; align-items: center; gap: 8px; }
+  .badges { display: flex; padding: 0; }
+  .badges li::before { content: '\2713'; color: var(--success); }
+
+  .services { padding: 72px 0; }
+  .section-head { max-width: 600px; margin: 0 auto 40px; text-align: center; }
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .service-card { padding: 26px 22px; border: 1px solid var(--ink-200); border-radius: var(--radius-md); text-align: center; }
+  .service-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .service-card h3 { font-size: 1rem; margin-bottom: 6px; }
+  .service-card p { font-size: 0.88rem; margin: 0; }
+
+  .trust { padding: 60px 0; background: var(--ink-50); }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .trust-item .num { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 2rem; color: var(--accent-500); }
+  .trust-item p { margin: 4px 0 0; font-size: 0.9rem; font-weight: 600; color: var(--ink-800); }
+
+  .contact { padding: 72px 0; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .contact-card { background: var(--ink-900); color: white; padding: 36px; border-radius: var(--radius-lg); }
+  .contact-card h3 { color: white; }
+  .contact-card p, .contact-card a { color: #c9cdd4; }
+  .contact-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #2a2f38; }
+  .contact-row:last-child { border-bottom: none; }
+  .map-embed { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--ink-200); height: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; background: var(--ink-50); position: relative; }
+  .map-embed iframe { width: 100%; height: 100%; border: 0; display: block; position: absolute; inset: 0; }
+  .map-fallback { text-align: center; padding: 32px; position: relative; z-index: 1; }
+  .map-fallback .pin { font-size: 2rem; margin-bottom: 8px; }
+  .map-fallback a { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-weight: 700; color: var(--accent-500); font-size: 0.9rem; }
+
+  .site-footer { padding: 32px 0; border-top: 1px solid var(--ink-200); text-align: center; font-size: 0.85rem; color: var(--ink-600); }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-grid { grid-template-columns: 1fr; gap: 32px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .main-nav a:not(.nav-cta) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Ben's <span>Panelbeaters</span></a>
+      <nav class="main-nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">SAMBRA Approved &middot; Pretoria Central</p>
+        <h1>Panel beating and spray painting done right, the first time.</h1>
+        <p class="hero-sub">Accident repairs, dent removal and professional spray painting for every make and model. Chery-approved, SAMBRA-accredited, trusted in Pretoria for years.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get a free quote</a>
+          <a href="tel:0123266164" class="btn btn-ghost">Call 012 326 6164</a>
+        </div>
+        <ul class="badges">
+          <li>SAMBRA approved repairer</li>
+          <li>Chery approved panel beater</li>
+          <li>Insurance claims handled</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>What we do</h2>
+          <p>From minor dents to full accident repairs, handled by an accredited team.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="icon">🔧</div>
+            <h3>Panel beating</h3>
+            <p>Structural and cosmetic repairs to accident-damaged bodywork.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🎨</div>
+            <h3>Spray painting</h3>
+            <p>Colour-matched, factory-standard finishes for any make.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🚗</div>
+            <h3>Dent removal</h3>
+            <p>Minor dent and scratch repair without a full respray.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">📋</div>
+            <h3>Insurance claims</h3>
+            <p>We work directly with insurers to make claims painless.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" id="about">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <div class="num">SAMBRA</div>
+            <p>Accredited repairer</p>
+          </div>
+          <div class="trust-item">
+            <div class="num">Chery</div>
+            <p>Approved panel beater</p>
+          </div>
+          <div class="trust-item">
+            <div class="num">68 Struben St</div>
+            <p>Pretoria Central</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <h3>Get in touch</h3>
+          <p>Mon &ndash; Fri, 08:00 &ndash; 17:00</p>
+          <div class="contact-row">
+            <span>&#128222;</span>
+            <a href="tel:0123266164">012 326 6164</a>
+          </div>
+          <div class="contact-row">
+            <span>&#9993;</span>
+            <a href="mailto:management@benspanelbeaters.co.za">management@benspanelbeaters.co.za</a>
+          </div>
+          <div class="contact-row">
+            <span>&#128205;</span>
+            <span>68 Struben Street, Pretoria Central</span>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe src="https://maps.google.com/maps?width=100%25&height=100%25&hl=en&q=Ben%27s%20Panelbeaters%2C%2068%20Struben%20Street%2C%20Pretoria%20Central&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Ben's Panelbeaters location"></iframe>
+          <div class="map-fallback">
+            <div class="pin">📍</div>
+            <p style="margin:0; font-weight:700; color:var(--ink-800);">68 Struben Street, Pretoria Central</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=68+Struben+Street+Pretoria+Central" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Ben's Panelbeaters. This is a free redesign concept prepared by Sevren Studios, not the business's live site.</p>
+  </footer>
+
+</body>
+</html>
