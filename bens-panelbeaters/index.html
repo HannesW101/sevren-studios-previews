@@ -173,10 +173,19 @@
   .contact-line strong { display: block; color: var(--white); font-size: 0.95rem; }
   .contact-line span, .contact-line a { color: var(--steel-300); font-size: 0.92rem; }
 
-  .location-panel { padding: 44px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background: var(--steel-50); }
-  .location-panel .icon { color: var(--safety-500); width: 40px; height: 40px; margin-bottom: 16px; }
-  .location-panel h3 { font-size: 1rem; }
-  .location-panel a.map-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 700; color: var(--safety-600); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .location-panel { position: relative; background: var(--steel-100); min-height: 320px; overflow: hidden; }
+  .location-map-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .location-caption {
+    position: absolute; left: 16px; bottom: 16px; z-index: 1;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    box-shadow: 0 4px 16px rgba(12,15,19,0.18);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .location-caption .icon { color: var(--safety-500); width: 26px; height: 26px; margin: 0; }
+  .location-caption strong { display: block; font-family: 'Oswald', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .location-caption a { display: block; font-size: 0.8rem; color: var(--safety-600); font-weight: 700; margin-top: 2px; }
 
   /* ===== Footer ===== */
   .site-footer { background: var(--steel-950); color: var(--steel-500); padding: 28px 0; text-align: center; font-size: 0.82rem; }
@@ -286,28 +295,48 @@
         </div>
         <div class="service-list">
           <div class="service-row">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M4 15V9a2 2 0 0 1 2-2h5l2 3h5a2 2 0 0 1 2 2v3"/><path d="M2 15h20"/><path d="M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M3 16.5l1.2-4.8A2.5 2.5 0 0 1 6.6 9.8h10.8a2.5 2.5 0 0 1 2.4 1.9l1.2 4.8"/>
+              <rect x="2.5" y="16.5" width="19" height="4" rx="1"/>
+              <circle cx="6.5" cy="20.5" r="1.4"/>
+              <circle cx="17.5" cy="20.5" r="1.4"/>
+              <path d="M9 5.5l-1.8 4.3M15 5.5l1.8 4.3" stroke-dasharray="1.6 1.6"/>
+            </svg>
             <div>
               <h3>Structural Panel Repair</h3>
               <p>Chassis and body panel correction following collision damage, restored to manufacturer tolerance.</p>
             </div>
           </div>
           <div class="service-row">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+            <svg class="icon" viewBox="0 0 24 24">
+              <rect x="5" y="9" width="6" height="12" rx="1"/>
+              <path d="M7 9V6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3"/>
+              <path d="M9 2.5v2"/>
+              <path d="M14 14c1-1 2-1 3 0s2 1 3 0" stroke-linecap="round"/>
+              <path d="M14 17.5c1-1 2-1 3 0s2 1 3 0" stroke-linecap="round"/>
+            </svg>
             <div>
               <h3>Colour-Matched Spray Painting</h3>
               <p>Factory-standard finishes matched to your vehicle's original code, booth-cured for a lasting result.</p>
             </div>
           </div>
           <div class="service-row">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M4 13a8 8 0 1 1 16 0"/><path d="M4 13c0 4 3.5 7 8 7s8-3 8-7"/><path d="M12 13v4"/></svg>
+            <svg class="icon" viewBox="0 0 24 24">
+              <rect x="3" y="6" width="18" height="12" rx="1.5"/>
+              <path d="M6 15c2-4 3-2 4.5-5s2.5-1 4-4 2.5 1 4-2" stroke-linecap="round"/>
+            </svg>
             <div>
               <h3>Dent &amp; Scratch Repair</h3>
               <p>Minor cosmetic damage corrected without a full respray, keeping cost and turnaround down.</p>
             </div>
           </div>
           <div class="service-row">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M4 6h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M6 2.5h9l3.5 3.5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-17.5a1 1 0 0 1 1-1z"/>
+              <path d="M15 2.5v3.5h3.5"/>
+              <path d="M7.5 12.5l2 2 4-4.5"/>
+              <path d="M7.5 17h6" />
+            </svg>
             <div>
               <h3>Insurance Claim Handling</h3>
               <p>We deal with your insurer directly, from initial assessment through to final approval.</p>
@@ -366,15 +395,27 @@
               <div><strong>Trading hours</strong><span>Monday &ndash; Friday, 08:00 &ndash; 17:00</span></div>
             </div>
           </div>
-          <div class="location-panel">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            <h3>68 Struben Street</h3>
-            <p style="margin:0;">Pretoria Central, Gauteng</p>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=68+Struben+Street+Pretoria+Central" target="_blank" rel="noopener">
-              <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px;color:inherit;"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg>
-              Get directions
-            </a>
-          </div>
+          <a class="location-panel" href="https://www.google.com/maps/search/?api=1&query=68+Struben+Street+Pretoria+Central" target="_blank" rel="noopener" aria-label="Open Ben's Panelbeaters location in Google Maps">
+            <svg class="location-map-art" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+              <rect width="400" height="320" fill="#e7e9ec"/>
+              <path d="M-20 60 L420 100" stroke="#c7cdd4" stroke-width="10"/>
+              <path d="M-20 180 L420 150" stroke="#c7cdd4" stroke-width="14"/>
+              <path d="M60 -20 L120 340" stroke="#c7cdd4" stroke-width="8"/>
+              <path d="M320 -20 L280 340" stroke="#c7cdd4" stroke-width="8"/>
+              <path d="M-20 250 L420 260" stroke="#d3d8dd" stroke-width="6"/>
+              <path d="M-20 180 L420 150" stroke="#ffffff" stroke-width="2" stroke-dasharray="10 8" opacity="0.8"/>
+              <circle cx="205" cy="140" r="46" fill="#e2621f" opacity="0.14"/>
+              <path d="M205 108c-16 0-29 13-29 29 0 21 29 51 29 51s29-30 29-51c0-16-13-29-29-29z" fill="#e2621f"/>
+              <circle cx="205" cy="136" r="11" fill="#0c0f13"/>
+            </svg>
+            <div class="location-caption">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              <div>
+                <strong>68 Struben Street</strong>
+                <span style="display:block; font-size:0.8rem; color:var(--safety-600); font-weight:700; margin-top:2px;">Open in Google Maps &rarr;</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
