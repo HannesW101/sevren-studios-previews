@@ -68,6 +68,11 @@
   .header-cta { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--navy-800); text-decoration: none; display: flex; align-items: center; gap: 8px; }
   .header-cta:hover { color: var(--navy-950); }
   .header-cta svg { width: 18px; height: 18px; }
+  .header-right { display: flex; align-items: center; gap: 34px; }
+  .nav-links { display: flex; gap: 26px; list-style: none; padding: 0; margin: 0; }
+  .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.98rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink); text-decoration: none; }
+  .nav-links a:hover { color: var(--navy-800); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
 
   /* ===== Hero: logo-anchored, not icon-invented ===== */
   .hero { background: var(--navy-950); color: var(--white); padding: 70px 0 64px; position: relative; overflow: hidden; }
@@ -91,10 +96,21 @@
   /* ===== Services: plain list, pipe-run number markers ===== */
   .services { padding: 76px 0 70px; }
   .services-head { max-width: 600px; margin-bottom: 44px; }
-  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-  .service-item { background: var(--white); padding: 30px 28px; }
-  .service-item h3 { font-size: 1.35rem; color: var(--navy-950); margin-bottom: 8px; }
-  .service-item p { color: var(--pipe-grey-dark); font-size: 0.94rem; margin: 0; max-width: none; }
+  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .service-item { background: var(--white); padding: 28px 26px; }
+  .service-item h3 { font-size: 1.2rem; color: var(--navy-950); margin-bottom: 8px; }
+  .service-item p { color: var(--pipe-grey-dark); font-size: 0.9rem; margin: 0; max-width: none; }
+  .services-note { margin-top: 32px; font-size: 0.94rem; color: var(--pipe-grey-dark); }
+  .services-note strong { color: var(--navy-950); }
+
+  /* ===== About: the real people behind the business ===== */
+  .about { padding: 74px 0; background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+  .about-copy h2 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 18px; }
+  .team-list { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .team-card { background: var(--warm-white); padding: 22px 24px; }
+  .team-card .name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--navy-950); text-transform: uppercase; letter-spacing: 0.01em; display: block; }
+  .team-card .role { font-size: 0.84rem; color: var(--navy-700); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
 
   /* ===== Trust band ===== */
   .trust { background: var(--warm-white); padding: 46px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -126,8 +142,15 @@
     .hero-grid { grid-template-columns: 1fr; }
     .hero-logo-wrap { order: -1; }
     .service-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .trust-inner { gap: 30px; }
+  }
+  @media (max-width: 640px) {
+    .service-grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 641px) and (max-width: 880px) {
+    .service-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -136,10 +159,17 @@
   <header class="site-header">
     <div class="container header-inner">
       <img src="assets/logo.png" alt="Fix A Drain Plumbers" />
-      <a href="tel:0814709978" class="header-cta">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        081 470 9978
-      </a>
+      <div class="header-right">
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="tel:0814709978" class="header-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          081 470 9978
+        </a>
+      </div>
     </div>
   </header>
 
@@ -205,16 +235,57 @@
             <p>Burst geysers, no hot water, or a full replacement, quoted straight and fixed properly.</p>
           </div>
           <div class="service-item">
-            <h3>Blocked drains</h3>
+            <h3>Blocked drains &amp; drain cleaning</h3>
             <p>Cleared without guessing, using the right equipment for the actual blockage.</p>
           </div>
           <div class="service-item">
-            <h3>Leak detection &amp; repair</h3>
+            <h3>Leak detection</h3>
             <p>Found and fixed before a small leak becomes a bigger bill.</p>
           </div>
           <div class="service-item">
-            <h3>General plumbing &amp; installations</h3>
-            <p>New fittings, renovations, and Certificates of Compliance where required.</p>
+            <h3>Plumbing installations</h3>
+            <p>New fittings and full plumbing systems for residential and commercial properties.</p>
+          </div>
+          <div class="service-item">
+            <h3>Plumbing repair &amp; maintenance</h3>
+            <p>Leaking or burst pipes, toilets, taps, and most everyday plumbing problems.</p>
+          </div>
+          <div class="service-item">
+            <h3>Damp problems</h3>
+            <p>Moisture and water damage traced back to the source and fixed, not just patched.</p>
+          </div>
+          <div class="service-item">
+            <h3>High pressure jet blasting</h3>
+            <p>Pressurised water clears stubborn blockages other methods can't shift.</p>
+          </div>
+          <div class="service-item">
+            <h3>Water pressure booster pumps</h3>
+            <p>Weak flow anywhere in the property, brought back up to a proper pressure.</p>
+          </div>
+          <div class="service-item">
+            <h3>Certificates of Compliance</h3>
+            <p>COCs issued for plumbing installations where required, no chasing paperwork.</p>
+          </div>
+        </div>
+        <p class="services-note"><strong>Residential and commercial</strong>, across Pretoria to Midrand.</p>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <span class="eyebrow">Who you're calling</span>
+          <h2>Run by plumbers, not a call centre</h2>
+          <p>Fix A Drain has been operating in Pretoria since 2017, built on straightforward pricing and turning up when we say we will. No dispatch queue, no subcontractors you've never met, the people who quote the job are the people who do it.</p>
+        </div>
+        <div class="team-list">
+          <div class="team-card">
+            <span class="name">Lennette Swanepoel</span>
+            <span class="role">Managing Director</span>
+          </div>
+          <div class="team-card">
+            <span class="name">Dewald Swanepoel</span>
+            <span class="role">Operations Manager</span>
           </div>
         </div>
       </div>
