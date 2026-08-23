@@ -3,100 +3,198 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Edal Panel Beaters | Pretoria West Auto Body Repair</title>
+<title>Edal Panel Beaters</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --black: #0a0a0a;
-    --char-900: #171414;
-    --char-700: #332c2c;
-    --char-500: #6b6060;
-    --char-200: #ddd6d6;
-    --char-50: #f7f5f4;
-    --white: #ffffff;
-    --red-600: #b91c1c;
-    --red-700: #941616;
-    --radius: 6px;
-    --max-width: 1120px;
+    --primer: #4a4d47;
+    --primer-dark: #23251f;
+    --primer-panel: #2c2e2a;
+    --weld-spark: #e08a1f;
+    --weld-spark-dim: #a5661a;
+    --steel-panel: #8f9490;
+    --chalk: #eeece4;
+    --chalk-dim: #d8d5c9;
+    --rust: #a3492f;
+    --radius: 2px;
+    --max-width: 1080px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--white); color: var(--char-900); line-height: 1.6; }
-  h1, h2, h3 { font-family: 'Archivo Black', 'Inter', sans-serif; font-weight: 400; line-height: 1.05; margin: 0 0 0.5em; color: var(--black); text-transform: uppercase; }
-  p { margin: 0 0 1em; color: var(--char-500); }
-  a { color: inherit; text-decoration: none; }
-  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.02em; border: 2px solid transparent; border-radius: var(--radius); cursor: pointer; }
-  .btn-primary { background: var(--red-600); color: var(--white); }
-  .btn-outline-dark { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
-
-  /* ===== Header, minimal wordmark only ===== */
-  .site-header { padding: 28px 0; }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; }
-  .wordmark { font-family: 'Archivo Black', sans-serif; font-size: 1.3rem; letter-spacing: -0.01em; }
-  .wordmark span { color: var(--red-600); }
-  .header-cta { font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.02em; }
-
-  /* ===== Hero: full-bleed slab headline, no card, no badge strip ===== */
-  .hero { padding: 20px 0 60px; }
-  .hero h1 {
-    font-size: clamp(2.6rem, 7vw, 5.2rem);
-    letter-spacing: -0.015em;
-    max-width: 920px;
+  body {
+    margin: 0;
+    font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    background: var(--chalk);
+    color: var(--primer-dark);
+    line-height: 1.6;
   }
-  .hero h1 em { font-style: normal; color: var(--red-600); }
-  .hero-sub { font-size: 1.1rem; max-width: 540px; margin-top: 20px; }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
-  .hero-actions .btn-outline-dark { color: var(--black); border-color: var(--char-700); }
+  h1, h2, h3 {
+    font-family: 'Anton', 'Arial Narrow', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.98;
+    margin: 0;
+    color: var(--primer-dark);
+    text-wrap: balance;
+  }
+  p { margin: 0 0 1em; color: var(--primer); max-width: 62ch; }
+  a { color: inherit; }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 28px; }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
-  /* ===== Case strip: three real repair scenarios instead of a services grid ===== */
-  .cases { background: var(--black); color: var(--white); padding: 6px 0 0; }
-  .case-row { display: grid; grid-template-columns: 60px 1fr; gap: 20px; padding: 34px 0; border-bottom: 1px solid var(--char-700); }
-  .case-row:last-child { border-bottom: none; }
-  .case-num { font-family: 'Archivo Black', sans-serif; font-size: 2.2rem; color: var(--red-600); line-height: 1; }
-  .case-row h3 { color: var(--white); font-family: 'Inter', sans-serif; font-weight: 800; text-transform: none; font-size: 1.15rem; margin-bottom: 6px; }
-  .case-row p { color: var(--char-200); margin: 0; max-width: 560px; }
+  /* ===== Ticket header band, appears on every section ===== */
+  .ticket-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--weld-spark-dim);
+    margin-bottom: 18px;
+  }
+  .ticket-tab::before { content: ''; width: 20px; height: 2px; background: var(--weld-spark); }
 
-  /* ===== The line, full-bleed statement, not a testimonial card ===== */
-  .statement { background: var(--red-600); color: var(--white); padding: 80px 0; text-align: center; }
-  .statement p.eyebrow { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
-  .statement h2 { color: var(--white); font-size: clamp(2rem, 5vw, 3.4rem); max-width: 780px; margin: 0 auto; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 26px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1.5px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-spark { background: var(--weld-spark); color: var(--primer-dark); }
+  .btn-spark:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--weld-spark-dim); }
+  .btn-outline { background: transparent; color: var(--chalk); border-color: rgba(238,236,228,0.4); }
+  .btn-outline:hover { border-color: var(--weld-spark); color: var(--weld-spark); }
 
-  /* ===== Services, plain list, not iconed cards ===== */
+  /* ===== Header ===== */
+  .site-header { padding: 26px 0; background: var(--primer-dark); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; }
+  .stamp-mark { display: flex; align-items: center; gap: 12px; }
+  .stamp-mark svg { width: 34px; height: 34px; }
+  .wordmark { font-family: 'Anton', sans-serif; font-size: 1.2rem; color: var(--chalk); letter-spacing: 0.02em; }
+  .wordmark span { color: var(--weld-spark); }
+  .header-cta { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--chalk-dim); }
+  .header-cta:hover { color: var(--weld-spark); }
+
+  /* ===== Hero: job-card intake form styling ===== */
+  .hero { background: var(--primer-dark); color: var(--chalk); padding: 60px 0 0; position: relative; }
+  .hero-inner { max-width: 880px; }
+  .job-number { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--steel-panel); letter-spacing: 0.05em; margin-bottom: 8px; opacity: 0; animation: stampIn 0.5s ease forwards; }
+  .hero h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); color: var(--chalk); opacity: 0; animation: stampIn 0.6s ease 0.12s forwards; }
+  .hero h1 .spark { color: var(--weld-spark); }
+  .hero-sub { color: var(--chalk-dim); font-size: 1.08rem; max-width: 520px; margin: 22px 0 0; opacity: 0; animation: stampIn 0.6s ease 0.26s forwards; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; opacity: 0; animation: stampIn 0.6s ease 0.4s forwards; }
+
+  @keyframes stampIn {
+    0% { opacity: 0; transform: translateY(10px) scale(0.98); }
+    60% { opacity: 1; }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .ticket-perf {
+    height: 22px;
+    background: var(--primer-dark);
+    position: relative;
+    margin-top: 54px;
+  }
+  .ticket-perf svg { display: block; width: 100%; height: 22px; }
+
+  /* ===== Job log: numbered case entries styled as ticket line-items ===== */
+  .job-log { background: var(--chalk); padding: 76px 0; }
+  .job-log-head { max-width: 640px; margin-bottom: 8px; }
+  .job-log-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+  .job-log-head p { margin-top: 14px; }
+
+  .log-entry {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 24px;
+    padding: 30px 0;
+    border-top: 1.5px dashed var(--chalk-dim);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s ease;
+  }
+  .log-entry.in-view { opacity: 1; transform: translateY(0); }
+  .job-log .log-entry:last-child { border-bottom: 1.5px dashed var(--chalk-dim); }
+  .log-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--weld-spark-dim); font-weight: 600; padding-top: 4px; }
+  .log-entry h3 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; text-transform: none; font-size: 1.12rem; margin-bottom: 6px; letter-spacing: normal; }
+  .log-entry p { margin: 0; font-size: 0.95rem; }
+  .log-entry:hover { background: rgba(224,138,31,0.06); }
+
+  /* ===== The line: stamped statement, not a quote card ===== */
+  .statement { background: var(--primer); color: var(--chalk); padding: 80px 0; position: relative; overflow: hidden; }
+  .statement-inner { text-align: center; position: relative; z-index: 1; }
+  .statement .ticket-tab { color: rgba(238,236,228,0.65); justify-content: center; }
+  .statement .ticket-tab::before { background: var(--weld-spark); }
+  .statement h2 { color: var(--chalk); font-size: clamp(2rem, 5.4vw, 3.6rem); max-width: 780px; margin: 0 auto; }
+  .statement h2 .spark { color: var(--weld-spark); }
+
+  /* ===== Services: parts-catalogue table styling ===== */
   .services { padding: 80px 0; }
-  .services-head { max-width: 560px; margin-bottom: 40px; }
-  .service-lines { border-top: 2px solid var(--black); }
-  .service-line { display: flex; justify-content: space-between; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--char-200); gap: 24px; }
-  .service-line .name { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--black); }
-  .service-line .desc { color: var(--char-500); font-size: 0.92rem; text-align: right; max-width: 400px; }
+  .services-head { max-width: 560px; margin-bottom: 36px; }
+  .services-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+  .parts-table { width: 100%; border-collapse: collapse; }
+  .parts-table th {
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--steel-panel);
+    padding: 0 0 12px;
+    border-bottom: 2px solid var(--primer-dark);
+    font-weight: 600;
+  }
+  .parts-table td { padding: 20px 0; border-bottom: 1px solid var(--chalk-dim); vertical-align: top; }
+  .parts-table .code { font-family: 'IBM Plex Mono', monospace; color: var(--weld-spark-dim); font-weight: 600; font-size: 0.85rem; width: 70px; }
+  .parts-table .item { font-weight: 700; width: 260px; }
+  .parts-table .note { color: var(--primer); font-size: 0.92rem; }
 
-  /* ===== Contact: single dark panel, address as text with a hand-drawn compass mark ===== */
-  .contact { background: var(--char-900); color: var(--white); padding: 80px 0; }
+  /* ===== Contact: job intake panel ===== */
+  .contact { background: var(--primer-dark); color: var(--chalk); padding: 80px 0; }
+  .contact .ticket-tab { color: rgba(238,236,228,0.6); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-  .contact h2 { color: var(--white); }
-  .contact > .container > .contact-grid > div > p { color: var(--char-200); }
-  .contact-list { list-style: none; padding: 0; margin: 28px 0 0; }
-  .contact-list li { padding: 14px 0; border-top: 1px solid var(--char-700); }
+  .contact h2 { color: var(--chalk); font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+  .contact-grid > div:first-child p { color: var(--chalk-dim); }
+  .contact-list { list-style: none; padding: 0; margin: 26px 0 0; }
+  .contact-list li { padding: 14px 0; border-top: 1px dashed rgba(238,236,228,0.25); }
   .contact-list li:first-child { border-top: none; padding-top: 0; }
-  .contact-list .label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--char-500); margin-bottom: 4px; }
-  .contact-list a { font-weight: 700; font-size: 1rem; color: var(--white); }
+  .contact-list .label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--steel-panel); margin-bottom: 4px; }
+  .contact-list a { font-weight: 700; font-size: 1.02rem; color: var(--chalk); text-decoration: none; }
+  .contact-list a:hover { color: var(--weld-spark); }
 
-  .compass-card { background: var(--black); border-radius: var(--radius); padding: 32px; }
-  .compass { width: 100%; height: auto; margin-bottom: 20px; }
-  .compass-card h3 { color: var(--white); font-family: 'Inter', sans-serif; font-weight: 800; text-transform: none; font-size: 1rem; }
-  .compass-card p { color: var(--char-200); margin: 4px 0 0; font-size: 0.92rem; }
-  .directions-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-weight: 800; color: var(--red-600); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .location-panel { background: var(--primer-panel); border-radius: var(--radius); padding: 30px; }
+  .location-panel svg { width: 100%; height: auto; margin-bottom: 18px; }
+  .location-panel h3 { color: var(--chalk); font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; text-transform: none; font-size: 1rem; letter-spacing: normal; }
+  .location-panel p { color: var(--chalk-dim); margin: 4px 0 0; font-size: 0.92rem; }
+  .directions-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--weld-spark); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; }
+  .directions-link:hover { color: var(--chalk); }
 
-  .site-footer { background: var(--black); color: var(--char-500); padding: 26px 0; text-align: center; font-size: 0.82rem; }
+  .site-footer { background: var(--primer-dark); color: var(--steel-panel); padding: 24px 0; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; }
 
   @media (max-width: 860px) {
     .contact-grid { grid-template-columns: 1fr; }
-    .case-row { grid-template-columns: 44px 1fr; }
-    .service-line { flex-direction: column; align-items: flex-start; gap: 6px; }
-    .service-line .desc { text-align: left; }
+    .log-entry { grid-template-columns: 56px 1fr; }
+    .parts-table .item { width: auto; }
+    .parts-table thead { display: none; }
+    .parts-table td { display: block; padding: 4px 0; border-bottom: none; }
+    .parts-table tr { display: block; padding: 18px 0; border-bottom: 1px solid var(--chalk-dim); }
   }
 </style>
 </head>
@@ -104,107 +202,135 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <div class="wordmark">EDAL<span>.</span></div>
-      <a href="#contact" class="header-cta">Get a quote &rarr;</a>
+      <div class="stamp-mark">
+        <svg viewBox="0 0 40 40" fill="none">
+          <rect x="4" y="4" width="32" height="32" rx="2" stroke="#e08a1f" stroke-width="2"/>
+          <path d="M12 24l4-9 4 6 4-11 4 14" stroke="#eeece4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="wordmark">EDAL<span>.</span></div>
+      </div>
+      <a href="#contact" class="header-cta">Log a job &rarr;</a>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <h1>No car is a <em>write-off</em> at Edal's.</h1>
-        <p class="hero-sub">Pretoria West panel beaters taking on the accident damage other shops turn down. Structural work, panel correction and colour-matched spray, done properly.</p>
+      <div class="container hero-inner">
+        <p class="job-number mono">JOB CARD &middot; PRETORIA WEST EXT 1</p>
+        <h1>No car is a <span class="spark">write-off</span> at Edal's.</h1>
+        <p class="hero-sub">We take on the accident damage other panel beaters won't quote. Structural repair, panel correction and colour-matched spray, done properly, not patched.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Get a free quote</a>
-          <a href="tel:0765986173" class="btn btn-outline-dark">Call 076 598 6173</a>
+          <a href="#contact" class="btn btn-spark">Get a free quote</a>
+          <a href="tel:0765986173" class="btn btn-outline">Call 076 598 6173</a>
         </div>
+      </div>
+      <div class="ticket-perf" aria-hidden="true">
+        <svg viewBox="0 0 1080 22" preserveAspectRatio="none">
+          <line x1="0" y1="11" x2="1080" y2="11" stroke="#4a4d47" stroke-width="1" stroke-dasharray="2 8"/>
+        </svg>
       </div>
     </section>
 
-    <section class="cases">
+    <section class="job-log" id="log">
       <div class="container">
-        <div class="case-row">
-          <span class="case-num">01</span>
-          <div>
-            <h3>The car everyone else called a write-off</h3>
-            <p>Heavy structural damage, the kind most shops quote high and hope you walk away from. We don't. If it can be brought back to a safe, roadworthy shape, we'll take it on.</p>
-          </div>
+        <div class="job-log-head">
+          <p class="ticket-tab">Recent intake</p>
+          <h2>What comes through the gate</h2>
+          <p>Three kinds of jobs, all handled the same way: assessed honestly, fixed properly.</p>
         </div>
-        <div class="case-row">
-          <span class="case-num">02</span>
-          <div>
-            <h3>The panel that has to disappear</h3>
-            <p>Colour-matched spray work so the repair isn't visible once it's done, not just close, matched properly to the rest of the body.</p>
+        <div class="log-entries">
+          <div class="log-entry">
+            <span class="log-tag mono">CASE&nbsp;01</span>
+            <div>
+              <h3>The car everyone else called a write-off</h3>
+              <p>Heavy structural damage, the kind most shops quote high and hope you walk away from. If it can be brought back to a safe, roadworthy shape, we'll take it on.</p>
+            </div>
           </div>
-        </div>
-        <div class="case-row">
-          <span class="case-num">03</span>
-          <div>
-            <h3>The small job that's easy to ignore</h3>
-            <p>A dent, a scratch, a scuffed bumper. Handled fast, without turning it into a full respray you don't need.</p>
+          <div class="log-entry">
+            <span class="log-tag mono">CASE&nbsp;02</span>
+            <div>
+              <h3>The panel that has to disappear</h3>
+              <p>Colour-matched spray work so the repair isn't visible once it's done, not close, matched properly to the rest of the body.</p>
+            </div>
+          </div>
+          <div class="log-entry">
+            <span class="log-tag mono">CASE&nbsp;03</span>
+            <div>
+              <h3>The small job that's easy to ignore</h3>
+              <p>A dent, a scratch, a scuffed bumper. Handled fast, without turning it into a full respray you don't need.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="statement">
-      <div class="container">
-        <p class="eyebrow">Our reputation, in one line</p>
-        <h2>"No car is a write-off at Edal's."</h2>
+      <div class="container statement-inner">
+        <p class="ticket-tab">Shop motto, stamped on every job card</p>
+        <h2>"No car is a <span class="spark">write-off</span> at Edal's."</h2>
       </div>
     </section>
 
     <section class="services" id="services">
       <div class="container">
         <div class="services-head">
+          <p class="ticket-tab">Service list</p>
           <h2>What we handle</h2>
-          <p>From a structural rebuild to a scuffed bumper.</p>
         </div>
-        <div class="service-lines">
-          <div class="service-line">
-            <span class="name">Structural &amp; panel repair</span>
-            <span class="desc">Collision damage corrected back to shape, including heavier structural work others won't quote.</span>
-          </div>
-          <div class="service-line">
-            <span class="name">Colour-matched spray painting</span>
-            <span class="desc">Finishes matched to your vehicle so the repair blends into the rest of the panel.</span>
-          </div>
-          <div class="service-line">
-            <span class="name">Dent &amp; scratch repair</span>
-            <span class="desc">Smaller cosmetic jobs, turned around fast, without a full respray.</span>
-          </div>
-        </div>
+        <table class="parts-table">
+          <thead>
+            <tr><th>Ref</th><th>Service</th><th>Detail</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="code mono">STR</td>
+              <td class="item">Structural &amp; panel repair</td>
+              <td class="note">Collision damage corrected back to shape, including heavier structural work others won't quote.</td>
+            </tr>
+            <tr>
+              <td class="code mono">SPR</td>
+              <td class="item">Colour-matched spray painting</td>
+              <td class="note">Finishes matched to your vehicle so the repair blends into the rest of the panel.</td>
+            </tr>
+            <tr>
+              <td class="code mono">DNT</td>
+              <td class="item">Dent &amp; scratch repair</td>
+              <td class="note">Smaller cosmetic jobs, turned around fast, without a full respray.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <h2>Get a Quote</h2>
-          <p>Send us the damage, we'll give you a straight answer on whether it's worth fixing and what it'll take.</p>
-          <ul class="contact-list">
-            <li>
-              <span class="label">Call</span>
-              <a href="tel:0765986173">076 598 6173</a>
-            </li>
-            <li>
-              <span class="label">Email</span>
-              <a href="mailto:edalpanelbeaters@gmail.com">edalpanelbeaters@gmail.com</a>
-            </li>
-          </ul>
-        </div>
-        <div class="compass-card">
-          <svg class="compass" viewBox="0 0 120 120" fill="none">
-            <circle cx="60" cy="60" r="52" stroke="#332c2c" stroke-width="1.5"/>
-            <circle cx="60" cy="60" r="2" fill="#b91c1c"/>
-            <path d="M60 12v14M60 94v14M12 60h14M94 60h14" stroke="#332c2c" stroke-width="1.5"/>
-            <path d="M60 60L84 30" stroke="#b91c1c" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M60 60L44 84" stroke="#6b6060" stroke-width="2.4" stroke-linecap="round"/>
-            <text x="60" y="8" fill="#ddd6d6" font-family="Inter, sans-serif" font-size="8" font-weight="700" text-anchor="middle">N</text>
-          </svg>
-          <h3>481 W.F. Nkomo Street</h3>
-          <p>Pretoria West Ext 1, Gauteng</p>
-          <a class="directions-link" href="https://www.google.com/maps/search/?api=1&query=481+W.F.+Nkomo+Street+Pretoria+West+Ext+1" target="_blank" rel="noopener">Get directions &rarr;</a>
+      <div class="container">
+        <p class="ticket-tab">Job intake</p>
+        <div class="contact-grid">
+          <div>
+            <h2>Get a Quote</h2>
+            <p>Send us the damage, we'll give you a straight answer on whether it's worth fixing and what it'll take.</p>
+            <ul class="contact-list">
+              <li>
+                <span class="label">Call</span>
+                <a href="tel:0765986173">076 598 6173</a>
+              </li>
+              <li>
+                <span class="label">Email</span>
+                <a href="mailto:edalpanelbeaters@gmail.com">edalpanelbeaters@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+          <div class="location-panel">
+            <svg viewBox="0 0 100 60" fill="none">
+              <rect x="1" y="1" width="98" height="58" rx="1.5" stroke="#4a4d47" stroke-width="1"/>
+              <path d="M10 45L30 20L50 38L70 15L90 32" stroke="#e08a1f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="30" cy="20" r="2.4" fill="#eeece4"/>
+              <circle cx="70" cy="15" r="2.4" fill="#eeece4"/>
+            </svg>
+            <h3>481 W.F. Nkomo Street</h3>
+            <p>Pretoria West Ext 1, Gauteng</p>
+            <a class="directions-link" href="https://www.google.com/maps/search/?api=1&query=481+W.F.+Nkomo+Street+Pretoria+West+Ext+1" target="_blank" rel="noopener">Get directions &rarr;</a>
+          </div>
         </div>
       </div>
     </section>
@@ -212,9 +338,26 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p style="margin:0;">&copy; 2026 Edal Panel Beaters &middot; This is a free redesign concept prepared by Sevren Studios, not the business's live site.</p>
+      <p class="mono" style="margin:0;">&copy; 2026 EDAL PANEL BEATERS &middot; FREE CONCEPT BY SEVREN STUDIOS, NOT THE LIVE SITE</p>
     </div>
   </footer>
+
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const entries = document.querySelectorAll('.log-entry');
+      const io = new IntersectionObserver((items) => {
+        items.forEach((item, i) => {
+          if (item.isIntersecting) {
+            setTimeout(() => item.target.classList.add('in-view'), i * 90);
+            io.unobserve(item.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      entries.forEach((el) => io.observe(el));
+    } else {
+      document.querySelectorAll('.log-entry').forEach((el) => el.classList.add('in-view'));
+    }
+  </script>
 
 </body>
 </html>
