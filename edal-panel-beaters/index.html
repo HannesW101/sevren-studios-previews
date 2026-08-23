@@ -45,7 +45,10 @@
   a { color: inherit; }
   .container { max-width: var(--max-width); margin: 0 auto; padding: 0 28px; }
   .mono { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .job-number, .hero h1, .hero-sub, .hero-actions, .log-entry { opacity: 1 !important; transform: none !important; }
+  }
 
   /* ===== Ticket header band, appears on every section ===== */
   .ticket-tab {
