@@ -7,7 +7,7 @@
 <title>Ger-Matic Autobody</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
     --pine-950: #12201b;
@@ -59,13 +59,62 @@
   .hero-sub { color: var(--sage); font-size: 1.08rem; max-width: 500px; margin: 22px 0 0; }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
 
-  /* ===== Testimonial spine, the structural centerpiece ===== */
-  .testimonial { background: var(--linen); padding: 84px 0; }
-  .testimonial-inner { max-width: 760px; margin: 0 auto; text-align: center; }
-  .quote-mark { font-family: 'Fraunces', serif; font-size: 4.5rem; color: var(--brass); line-height: 1; margin-bottom: 4px; display: block; }
-  .testimonial h2 { font-size: clamp(1.6rem, 3.6vw, 2.3rem); font-weight: 500; font-style: italic; color: var(--pine-950); }
-  .testimonial .attribution { margin-top: 22px; font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 0.9rem; color: var(--sage-dim); text-transform: uppercase; letter-spacing: 0.04em; }
-  .second-line { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--linen-dim); font-size: 1rem; color: var(--pine-700); font-style: italic; }
+  /* ===== Testimonial: a pinboard of real notes, not a quote block ===== */
+  .notes-section { background: var(--linen); padding: 96px 0 108px; }
+  .notes-head { max-width: 460px; margin: 0 auto 56px; text-align: center; }
+  .pinboard { position: relative; max-width: 620px; margin: 0 auto; height: 340px; }
+
+  .note {
+    position: absolute;
+    background: var(--white);
+    padding: 30px 32px 26px;
+    box-shadow: 0 14px 28px rgba(18,32,27,0.16), 0 2px 6px rgba(18,32,27,0.08);
+    border-radius: 2px;
+  }
+  .note::before {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 46px;
+    height: 22px;
+    background: rgba(201,154,68,0.55);
+    transform: translateX(-50%) rotate(-3deg);
+    box-shadow: 0 2px 4px rgba(18,32,27,0.15);
+  }
+  .note-back {
+    top: 4px;
+    left: 6%;
+    width: 62%;
+    transform: rotate(-6deg);
+    z-index: 1;
+    opacity: 0.9;
+  }
+  .note-front {
+    top: 46px;
+    right: 4%;
+    width: 66%;
+    transform: rotate(4deg);
+    z-index: 2;
+  }
+  .note p {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    line-height: 1.32;
+    color: var(--pine-950);
+    margin: 0 0 14px;
+    max-width: none;
+  }
+  .note .signed {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--sage-dim);
+    margin: 0;
+  }
+  .note-back p { font-size: 1.3rem; }
 
   /* ===== Services ===== */
   .services { padding: 80px 0; }
@@ -103,6 +152,12 @@
     .service-cards { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
   }
+
+  @media (max-width: 640px) {
+    .pinboard { height: auto; display: flex; flex-direction: column; gap: 28px; }
+    .note-back, .note-front { position: static; width: auto; transform: rotate(-1.5deg); }
+    .note-front { transform: rotate(1.5deg); }
+  }
 </style>
 </head>
 <body>
@@ -133,12 +188,22 @@
       </div>
     </section>
 
-    <section class="testimonial">
-      <div class="container testimonial-inner">
-        <span class="quote-mark">&ldquo;</span>
-        <h2>The service was professional, stress free, timely client updates about the repairs. Very quick and real time turnaround to complete the repairs on my Ford Fiesta.</h2>
-        <p class="attribution">A repeat Ger-Matic customer</p>
-        <p class="second-line">"Second time I am repairing my vehicle at Ger-Matic and they never disappoint."</p>
+    <section class="notes-section">
+      <div class="container">
+        <div class="notes-head">
+          <p class="eyebrow" style="justify-content:center;">What's on the wall by the till</p>
+          <h2 style="font-size: clamp(1.5rem, 3vw, 1.9rem);">A couple of the notes customers have left us.</h2>
+        </div>
+        <div class="pinboard">
+          <div class="note note-back">
+            <p>"Second time I am repairing my vehicle at Ger-Matic and they never disappoint."</p>
+            <p class="signed">&mdash; returning customer</p>
+          </div>
+          <div class="note note-front">
+            <p>"The service was professional, stress free, timely updates about the repairs. Very quick turnaround to complete the repairs on my Ford Fiesta."</p>
+            <p class="signed">&mdash; Ford Fiesta owner</p>
+          </div>
+        </div>
       </div>
     </section>
 
