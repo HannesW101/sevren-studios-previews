@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+<title>Fix A Drain Plumbers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --slate-950: #111a1d;
+    --slate-800: #1b2b30;
+    --slate-700: #26383e;
+    --copper: #b5622f;
+    --copper-dim: #8f4d24;
+    --copper-light: #e8b48d;
+    --mist-blue: #a8bcc0;
+    --mist-dim: #7c9297;
+    --porcelain: #f6f4f0;
+    --porcelain-dim: #e6e2d8;
+    --white: #ffffff;
+    --urgent: #c0392b;
+    --radius: 5px;
+    --max-width: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'DM Sans', 'Segoe UI', sans-serif; background: var(--white); color: var(--slate-950); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'DM Sans', sans-serif; font-weight: 800; line-height: 1.1; margin: 0; color: var(--slate-950); letter-spacing: -0.01em; text-wrap: balance; }
+  p { margin: 0 0 1em; color: var(--slate-700); max-width: 58ch; }
+  a { color: inherit; }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 28px; }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+  .eyebrow { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--copper); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .eyebrow::before { content: ''; width: 22px; height: 2px; background: var(--copper); }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.96rem; border: 1.5px solid transparent; border-radius: var(--radius); cursor: pointer; transition: transform 0.15s ease; }
+  .btn-primary { background: var(--copper); color: var(--white); }
+  .btn-primary:hover { background: var(--copper-light); transform: translateY(-2px); }
+  .btn-outline-dark { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .btn-outline-dark:hover { border-color: var(--copper); color: var(--copper); }
+
+  /* ===== Emergency strip: the actual spine of this page ===== */
+  .emergency-strip { background: var(--urgent); color: var(--white); padding: 12px 0; }
+  .emergency-inner { display: flex; align-items: center; justify-content: center; gap: 12px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.88rem; text-align: center; flex-wrap: wrap; }
+  .emergency-inner .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--white); animation: pulse 1.8s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .emergency-inner a { text-decoration: underline; }
+
+  /* ===== Header ===== */
+  .site-header { padding: 22px 0; background: var(--slate-950); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; }
+  .logo-block { display: flex; align-items: center; gap: 12px; }
+  .logo-block svg { width: 30px; height: 30px; }
+  .wordmark { font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--white); }
+  .wordmark span { color: var(--copper); }
+  .header-cta { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.88rem; color: var(--mist-blue); text-decoration: none; }
+  .header-cta:hover { color: var(--copper); }
+
+  /* ===== Hero ===== */
+  .hero { background: var(--slate-950); color: var(--white); padding: 64px 0 80px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: start; }
+  .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.2rem); color: var(--white); max-width: 560px; }
+  .hero h1 .accent { color: var(--copper); }
+  .hero-sub { color: var(--mist-blue); font-size: 1.05rem; max-width: 480px; margin: 20px 0 0; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+
+  .response-card { background: var(--slate-800); border: 1px solid var(--slate-700); border-radius: var(--radius); padding: 26px; }
+  .response-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--slate-700); }
+  .response-row:last-child { border-bottom: none; }
+  .response-row .label { font-size: 0.86rem; color: var(--mist-dim); }
+  .response-row .value { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--white); font-size: 0.92rem; }
+
+  /* ===== Services ===== */
+  .services { padding: 78px 0; }
+  .services-head { max-width: 560px; margin-bottom: 40px; }
+  .service-lines { border-top: 2px solid var(--slate-950); }
+  .service-line { display: flex; justify-content: space-between; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--porcelain-dim); gap: 24px; }
+  .service-line .name { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.08rem; }
+  .service-line .desc { color: var(--slate-700); font-size: 0.92rem; text-align: right; max-width: 380px; }
+
+  /* ===== Credentials band ===== */
+  .credentials { background: var(--porcelain); padding: 56px 0; }
+  .cred-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--porcelain-dim); border-radius: var(--radius); overflow: hidden; }
+  .cred-item { background: var(--white); padding: 26px 24px; }
+  .cred-item .mono { font-size: 0.72rem; color: var(--copper-dim); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+  .cred-item strong { display: block; font-size: 1.02rem; margin-top: 8px; }
+
+  /* ===== Contact ===== */
+  .contact { background: var(--slate-800); color: var(--white); padding: 78px 0; }
+  .contact h2 { color: var(--white); font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; margin-top: 8px; }
+  .contact-grid > div:first-child p { color: var(--mist-blue); }
+  .contact-list { list-style: none; padding: 0; margin: 26px 0 0; }
+  .contact-list li { padding: 14px 0; border-top: 1px solid var(--slate-700); }
+  .contact-list li:first-child { border-top: none; padding-top: 0; }
+  .contact-list .label { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mist-dim); margin-bottom: 4px; }
+  .contact-list a { font-weight: 700; font-size: 1.02rem; color: var(--white); text-decoration: none; }
+  .contact-list a:hover { color: var(--copper); }
+
+  .location-panel { background: var(--slate-950); border-radius: var(--radius); padding: 30px; }
+  .location-panel h3 { color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem; }
+  .location-panel p { color: var(--mist-blue); margin: 6px 0 0; font-size: 0.92rem; }
+  .directions-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--copper); font-size: 0.88rem; text-decoration: none; }
+  .directions-link:hover { color: var(--white); }
+
+  .site-footer { background: var(--slate-950); color: var(--mist-dim); padding: 24px 0; text-align: center; font-size: 0.82rem; }
+
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .cred-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .service-line { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .service-line .desc { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="emergency-strip">
+    <div class="container emergency-inner">
+      <span class="dot"></span>
+      <span>Burst geyser or blocked drain right now? We answer 24/7.</span>
+      <a href="tel:0814709978">Call 081 470 9978</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-block">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M10 4v10a6 6 0 0 0 12 0V4" stroke="#b5622f" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M16 20v8" stroke="#b5622f" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="16" cy="28" r="2" fill="#b5622f"/>
+        </svg>
+        <div class="wordmark">Fix A <span>Drain</span></div>
+      </div>
+      <a href="#contact" class="header-cta">Get a quote &rarr;</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Pretoria to Midrand &middot; Since 2017</p>
+          <h1>The pipe doesn't wait for business hours. <span class="accent">Neither do we.</span></h1>
+          <p class="hero-sub">Geysers, blocked drains, leaks and installations, handled by a PIRB-registered team that actually picks up at 2am.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get a free quote</a>
+            <a href="tel:0814709978" class="btn btn-outline-dark">Call 081 470 9978</a>
+          </div>
+        </div>
+        <div class="response-card">
+          <div class="response-row"><span class="label">Emergency call-out</span><span class="value mono">24/7</span></div>
+          <div class="response-row"><span class="label">Serving</span><span class="value mono">Pretoria &ndash; Midrand</span></div>
+          <div class="response-row"><span class="label">Operating since</span><span class="value mono">2017</span></div>
+          <div class="response-row"><span class="label">Registration</span><span class="value mono">PIRB</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services-head">
+          <p class="eyebrow">What we handle</p>
+          <h2>From a dripping tap to a burst geyser at midnight.</h2>
+        </div>
+        <div class="service-lines">
+          <div class="service-line">
+            <span class="name">Geyser repairs &amp; replacements</span>
+            <span class="desc">Burst geysers, no hot water, or a full replacement, quoted straight and fixed properly.</span>
+          </div>
+          <div class="service-line">
+            <span class="name">Blocked drains</span>
+            <span class="desc">Cleared without guessing, using the right equipment for the actual blockage.</span>
+          </div>
+          <div class="service-line">
+            <span class="name">Leak detection &amp; repair</span>
+            <span class="desc">Found and fixed before a small leak becomes a bigger bill.</span>
+          </div>
+          <div class="service-line">
+            <span class="name">General plumbing &amp; installations</span>
+            <span class="desc">New fittings, renovations, and Certificates of Compliance where required.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="credentials">
+      <div class="container">
+        <div class="cred-grid">
+          <div class="cred-item">
+            <span class="mono">Registration</span>
+            <strong>PIRB registered plumber</strong>
+          </div>
+          <div class="cred-item">
+            <span class="mono">Availability</span>
+            <strong>24/7 emergency call-out</strong>
+          </div>
+          <div class="cred-item">
+            <span class="mono">Track record</span>
+            <strong>Operating in Pretoria since 2017</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Get a Quote</h2>
+        <div class="contact-grid">
+          <div>
+            <p>Tell us what's going on, we'll give you a straight answer on timing and cost, day or night.</p>
+            <ul class="contact-list">
+              <li>
+                <span class="label">Call, 24/7</span>
+                <a href="tel:0814709978">081 470 9978</a>
+              </li>
+              <li>
+                <span class="label">Email</span>
+                <a href="mailto:admin@fixadrain.co.za">admin@fixadrain.co.za</a>
+              </li>
+            </ul>
+          </div>
+          <div class="location-panel">
+            <h3>47 Elephant Road, Monument Park</h3>
+            <p>Pretoria, serving Pretoria to Midrand</p>
+            <a class="directions-link" href="https://www.google.com/maps/search/?api=1&query=47+Elephant+Road+Monument+Park+Pretoria" target="_blank" rel="noopener">Get directions &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p style="margin:0;">&copy; 2026 Fix A Drain Plumbers &middot; This is a free redesign concept prepared by Sevren Studios, not the business's live site.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
