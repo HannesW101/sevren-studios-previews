@@ -23,13 +23,24 @@
     }, 2500);
   }
 
-  var segments = window.location.pathname.split('/').filter(Boolean);
-  var last = segments[segments.length - 1] || '';
-  var path = /\.html$/.test(last) ? last : 'index.html';
-  document.querySelectorAll('.nav-links a, .mobile-menu-links a').forEach(function (a) {
-    var href = a.getAttribute('href');
-    if (href === path) a.classList.add('active');
-  });
+  (function setActiveNavLink() {
+    var links = document.querySelectorAll('.nav-links a, .mobile-menu-links a');
+    var segments = window.location.pathname.split('/').filter(Boolean);
+    var last = (segments[segments.length - 1] || '').replace(/\.html$/, '');
+    var matched = false;
+    links.forEach(function (a) {
+      var hrefPage = (a.getAttribute('href') || '').replace(/\.html$/, '');
+      if (hrefPage !== 'index' && hrefPage === last) {
+        a.classList.add('active');
+        matched = true;
+      }
+    });
+    if (!matched) {
+      links.forEach(function (a) {
+        if ((a.getAttribute('href') || '').replace(/\.html$/, '') === 'index') a.classList.add('active');
+      });
+    }
+  })();
 
   var siteHeader = document.querySelector('.site-header');
   var menuToggle = document.querySelector('.menu-toggle');
