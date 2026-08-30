@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+<title>Visit Us — Zoomies Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<link href="assets/zoomies-club.css" rel="stylesheet" />
+<style>
+  .page-hero { padding: 50px 0 60px; }
+
+  .contact-main { padding: 10px 0 76px; background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 46px; align-items: start; }
+  .contact-list { list-style: none; padding: 0; margin: 26px 0 30px; }
+  .contact-list li { padding: 16px 0; border-top: 2px dashed var(--tint-line); display: flex; align-items: center; gap: 14px; }
+  .contact-list li:first-child { border-top: none; padding-top: 0; }
+  .contact-list .icon { width: 44px; height: 44px; border-radius: 50%; background: var(--tint); border: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-list .icon svg { width: 22px; height: 22px; stroke: var(--pink-deep); }
+  .contact-list .label { display: block; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cyan-deep); margin-bottom: 3px; }
+  .contact-list a.value { font-weight: 700; font-size: 1.08rem; color: var(--ink); text-decoration: none; font-family: 'Baloo 2', sans-serif; }
+  .contact-list a.value:hover { color: var(--pink-deep); }
+
+  .map-panel { border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); box-shadow: 6px 6px 0 rgba(0,0,0,0.9); }
+  .map-panel iframe { width: 100%; height: 420px; border: 0; display: block; }
+
+  .hours-card { background: var(--ink); color: var(--white); border-radius: var(--radius); padding: 26px 28px; margin-top: 22px; }
+  .hours-card h4 { color: var(--cyan); font-family: 'Baloo 2', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85rem; margin-bottom: 12px; }
+  .hours-row { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.95rem; }
+  .hours-row:first-of-type { border-top: none; }
+  .hours-row .day { font-family: 'Baloo 2', sans-serif; font-weight: 600; }
+  .hours-row .time { color: #b8ccce; font-family: 'IBM Plex Mono', monospace; }
+
+  @media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/zoomies-club-logo.jpg" alt="Zoomies Club logo" />
+      <span class="brand-word">Zoomies Club<small>Doggy Daycare + Hotel</small></span>
+    </a>
+    <div class="header-right">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pack.html">Meet the Pack</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Visit</a></li>
+      </ul>
+      <a class="header-cta" href="https://wa.me/27824839046" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.84c0 4.55-3.71 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.58.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+        <span class="cta-full">WhatsApp Us</span><span class="cta-short">Chat</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="zzz" style="top: 30px; right: 8%; font-size: 2rem;"><span>Z</span><span>z</span><span>z</span></div>
+  <div class="container">
+    <span class="eyebrow">Come say hi</span>
+    <h1>Book your dog's first day.</h1>
+    <p>Message us on WhatsApp, we'll sort out the right plan for your dog and get you booked in.</p>
+  </div>
+</section>
+
+<div class="ripple-divider" id="rippleDivider">
+  <svg viewBox="0 0 400 46" preserveAspectRatio="none">
+    <circle class="ring" cx="70" cy="23" r="4" />
+    <circle class="ring ring2" cx="200" cy="23" r="4" />
+    <circle class="ring ring3" cx="330" cy="23" r="4" />
+  </svg>
+</div>
+
+<section class="contact-main">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2>81 Heugh Road, Walmer</h2>
+      <ul class="contact-list">
+        <li>
+          <span class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2z"/></svg></span>
+          <div><span class="label">WhatsApp / Call</span><a class="value" href="https://wa.me/27824839046" target="_blank" rel="noopener">082 483 9046</a></div>
+        </li>
+        <li>
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 4 8 8 8-8"/></svg></span>
+          <div><span class="label">Email</span><a class="value" href="mailto:bark@zoomiesgroup.co.za">bark@zoomiesgroup.co.za</a></div>
+        </li>
+        <li>
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5Z"/></svg></span>
+          <div><span class="label">Address</span><a class="value" href="https://maps.google.com/?q=81+Heugh+Rd,+Walmer,+Port+Elizabeth,+6001" target="_blank" rel="noopener">81 Heugh Rd, Walmer, PE, 6001</a></div>
+        </li>
+      </ul>
+      <div class="hours-card">
+        <h4>Daily Schedule</h4>
+        <div class="hours-row"><span class="day">Arrivals</span><span class="time">7:00 &ndash; 9:00 AM</span></div>
+        <div class="hours-row"><span class="day">Pick Up</span><span class="time">4:00 &ndash; 5:30 PM</span></div>
+        <div class="hours-row"><span class="day">Open</span><span class="time">7 Days a Week</span></div>
+      </div>
+      <div style="margin-top: 26px;">
+        <a class="btn btn-primary" href="https://wa.me/27824839046" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2z"/></svg>
+          Message Us on WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="map-panel reveal">
+      <iframe src="https://maps.google.com/maps?q=81%20Heugh%20Rd%2C%20Walmer%2C%20Port%20Elizabeth%2C%206001&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Zoomies Club location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="container trust-inner">
+    <div class="trust-item"><span class="mono">Location</span><strong>Walmer, Port Elizabeth</strong></div>
+    <div class="trust-item"><span class="mono">Open</span><strong>7 Days a Week</strong></div>
+    <div class="trust-item"><span class="mono">Security</span><strong>24/7 On-Site</strong></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/zoomies-club-logo.jpg" alt="Zoomies Club logo" />
+          <strong>Zoomies Club</strong>
+        </div>
+        <p>Doggy daycare and hotel in Walmer, Port Elizabeth. No kennels, hands-on handlers, big on love.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pack.html">Meet the Pack</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Visit Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/27824839046" target="_blank" rel="noopener">082 483 9046</a></li>
+          <li><a href="mailto:bark@zoomiesgroup.co.za">bark@zoomiesgroup.co.za</a></li>
+          <li><a href="https://maps.google.com/?q=81+Heugh+Rd,+Walmer,+Port+Elizabeth,+6001" target="_blank" rel="noopener">81 Heugh Rd, Walmer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Zoomies Club &middot; Walmer, Port Elizabeth</span>
+      <span>Site preview by Sevren Studios</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/zoomies-club.js"></script>
+
+</body>
+</html>
