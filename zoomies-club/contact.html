@@ -35,6 +35,11 @@
 
   @media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; } }
 
+  .visit-strip { display: flex; gap: 14px; margin-top: 18px; }
+  .visit-strip img { flex: 1; height: 90px; object-fit: cover; border-radius: 12px; border: 3px solid var(--ink); }
+  .visit-strip img:nth-child(2) { transform: rotate(-1.5deg); }
+  .visit-strip img:nth-child(3) { transform: rotate(1.5deg); }
+
   /* This page's main CTA gets a softer lift instead of the hard-shadow jump used elsewhere */
   .whatsapp-cta { transition: transform 0.2s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.2s ease, background 0.2s ease; }
   .whatsapp-cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 28px rgba(0,217,224,0.35); background: var(--cyan-bright); }
@@ -104,8 +109,15 @@
         </a>
       </div>
     </div>
-    <div class="map-panel reveal">
-      <iframe src="https://maps.google.com/maps?q=81%20Heugh%20Rd%2C%20Walmer%2C%20Port%20Elizabeth%2C%206001&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Zoomies Club location map"></iframe>
+    <div class="reveal">
+      <div class="map-panel">
+        <iframe src="https://maps.google.com/maps?q=81%20Heugh%20Rd%2C%20Walmer%2C%20Port%20Elizabeth%2C%206001&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Zoomies Club location map"></iframe>
+      </div>
+      <div class="visit-strip">
+        <img src="assets/zoomies-club-gate-only.jpg" alt="The Zoomies Club front gate" />
+        <img src="assets/zoomies-club-dog-alex.jpg" alt="Alex, a regular" style="object-position: center 15%;" />
+        <img src="assets/zoomies-club-dog-kevi.jpg" alt="Kevi, a regular" style="object-position: center 20%;" />
+      </div>
     </div>
   </div>
 </section>

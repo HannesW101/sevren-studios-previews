@@ -13,6 +13,10 @@
   .page-hero { padding: 50px 0 60px; text-align: center; }
   .page-hero .eyebrow { justify-content: center; }
   .page-hero p { margin-left: auto; margin-right: auto; }
+  .hero-mugshots { display: flex; justify-content: center; gap: 14px; margin-top: 30px; }
+  .hero-mugshots img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--cyan); box-shadow: 0 6px 14px rgba(0,0,0,0.4); }
+  .hero-mugshots img:nth-child(2) { border-color: var(--pink); transform: translateY(-8px); }
+  .hero-mugshots img:nth-child(4) { border-color: var(--pink); transform: translateY(-8px); }
 
   .pricing { padding: 70px 0 30px; background: var(--white); }
   .rate-card { background: var(--ink); border-radius: 28px; padding: 10px; position: relative; }
@@ -85,6 +89,13 @@
     <span class="eyebrow">Price List 2026</span>
     <h1>No surprises. Pick what fits your dog's week.</h1>
     <p>Second pet? Third? Every plan below drops 15% once you've got two or more pets coming along.</p>
+    <div class="hero-mugshots reveal">
+      <img src="assets/zoomies-club-dog-sandwich.jpg" alt="Sandwich" style="object-position: center 20%;" />
+      <img src="assets/zoomies-club-dog-jack.jpg" alt="Jack" style="object-position: center 25%;" />
+      <img src="assets/zoomies-club-dog-luna.jpg" alt="Luna" style="object-position: center 20%;" />
+      <img src="assets/zoomies-club-dog-boog.jpg" alt="Boog" style="object-position: center 25%;" />
+      <img src="assets/zoomies-club-dog-betty.jpg" alt="Betty" style="object-position: center 20%;" />
+    </div>
   </div>
 </section>
 

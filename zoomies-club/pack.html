@@ -29,13 +29,12 @@
 
   /* ===== Staff section ===== */
   .staff { padding: 76px 0 70px; background: var(--white); }
-  .staff-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
-  .staff-card { border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; aspect-ratio: 3/4; }
-  .staff-card img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
-  .staff-card figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 10px 12px; background: linear-gradient(to top, rgba(10,21,24,0.92), transparent); color: var(--white); text-align: center; }
-  .staff-card figcaption strong { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.98rem; display: block; }
-  @media (max-width: 980px) { .staff-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 560px) { .staff-grid { grid-template-columns: repeat(2, 1fr); } }
+  .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .staff-card { border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; aspect-ratio: 4/5; box-shadow: 6px 6px 0 rgba(0,0,0,0.9); transition: transform 0.2s cubic-bezier(0.2,0.9,0.3,1.3), box-shadow 0.2s ease; }
+  .staff-card:hover { transform: translate(-3px, -3px) rotate(0.6deg); box-shadow: 9px 9px 0 rgba(0,0,0,0.9); }
+  .staff-card img { width: 100%; height: 100%; object-fit: cover; object-position: center 26%; }
+  @media (max-width: 980px) { .staff-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .staff-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; } }
 
   /* ===== Venue strip ===== */
   .venue { padding: 8px 0 76px; background: var(--white); }
@@ -132,30 +131,12 @@
       <p>Real handlers, on-site, all day. No shift of strangers, just familiar faces your dog gets to know.</p>
     </div>
     <div class="staff-grid stagger">
-      <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-gcinile.jpg" alt="Gcinile, Zoomies Club staff" />
-        <figcaption><strong>Gcinile</strong></figcaption>
-      </figure>
-      <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-dianne.jpg" alt="Di-Anne, Zoomies Club staff" />
-        <figcaption><strong>Di-Anne</strong></figcaption>
-      </figure>
-      <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-chris.jpg" alt="Chris, Zoomies Club staff" />
-        <figcaption><strong>Chris</strong></figcaption>
-      </figure>
-      <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-casey.jpg" alt="Casey, Zoomies Club staff" />
-        <figcaption><strong>Casey</strong></figcaption>
-      </figure>
-      <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-thandeka.jpg" alt="Thandeka, Zoomies Club staff" />
-        <figcaption><strong>Thandeka</strong></figcaption>
-      </figure>
-      <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-palesa.jpg" alt="Palesa, Zoomies Club staff" />
-        <figcaption><strong>Palesa</strong></figcaption>
-      </figure>
+      <figure class="staff-card"><img src="assets/zoomies-club-staff-gcinile.jpg" alt="Gcinile, Zoomies Club staff" /></figure>
+      <figure class="staff-card"><img src="assets/zoomies-club-staff-dianne.jpg" alt="Di-Anne, Zoomies Club staff" /></figure>
+      <figure class="staff-card"><img src="assets/zoomies-club-staff-chris.jpg" alt="Chris, Zoomies Club staff" /></figure>
+      <figure class="staff-card"><img src="assets/zoomies-club-staff-casey.jpg" alt="Casey, Zoomies Club staff" /></figure>
+      <figure class="staff-card"><img src="assets/zoomies-club-staff-thandeka.jpg" alt="Thandeka, Zoomies Club staff" /></figure>
+      <figure class="staff-card"><img src="assets/zoomies-club-staff-palesa.jpg" alt="Palesa, Zoomies Club staff" /></figure>
     </div>
   </div>
 </section>
