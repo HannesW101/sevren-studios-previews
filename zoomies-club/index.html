@@ -62,7 +62,7 @@
   /* Mobile: same scattered, overlapping polaroid-wall treatment as desktop, just tighter */
   @media (max-width: 560px) {
     .scrapbook { display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 170px 170px 170px 170px 170px; gap: 0; max-width: 400px; padding: 0 8px 0; padding-bottom: 0; }
-    .polaroid { width: 150px; padding: 10px 10px 28px; }
+    .polaroid { width: 130px; padding: 10px 10px 28px; align-self: start; box-sizing: content-box; }
     .polaroid .frame { width: 130px; height: 130px; }
     .polaroid:hover { transform: scale(1.06) !important; }
 
@@ -93,11 +93,12 @@
   .grooming-callout { padding: 8px 0 70px; background: var(--tint); }
   .grooming-card { display: grid; grid-template-columns: 0.9fr 1.1fr; background: var(--ink); border-radius: 28px; overflow: hidden; border: 3px solid var(--ink); }
   .grooming-card img { width: 100%; height: 100%; object-fit: cover; min-height: 220px; }
-  .grooming-copy { padding: 38px 40px; color: var(--white); display: flex; flex-direction: column; justify-content: center; }
+  .grooming-copy { padding: 38px 40px; color: var(--white); display: flex; flex-direction: column; justify-content: center; min-width: 0; }
   .grooming-copy .eyebrow { color: #7de8ec; }
   .grooming-copy h2 { color: var(--white); font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 12px; }
   .grooming-copy p { color: #b8ccce; margin-bottom: 20px; }
-  @media (max-width: 780px) { .grooming-card { grid-template-columns: 1fr; } .grooming-card img { min-height: 180px; } }
+  .grooming-copy .btn { white-space: normal; text-align: center; }
+  @media (max-width: 780px) { .grooming-card { grid-template-columns: 1fr; } .grooming-card img { min-height: 180px; } .grooming-copy { padding: 30px 24px; } }
 
   /* ===== Meet the pack preview ===== */
   .pack-preview { padding: 76px 0 70px; background: var(--white); }
@@ -116,6 +117,11 @@
     .hero-badge-glow { width: 220px; height: 220px; }
     .service-grid { grid-template-columns: 1fr; }
     .trust-inner { gap: 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .facts-row { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+    .fact { border-right: none; padding-right: 0; }
   }
 </style>
 </head>
@@ -138,15 +144,34 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.84c0 4.55-3.71 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.58.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
         <span class="cta-full">WhatsApp Us</span><span class="cta-short">Chat</span>
       </a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
   </div>
 </header>
+
+<div class="mobile-menu">
+  <ul class="mobile-menu-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pack.html">Meet the Pack</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Visit</a></li>
+  </ul>
+  <div class="mobile-menu-cta">
+    <a class="btn btn-primary" href="https://wa.me/27824839046" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.84c0 4.55-3.71 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.58.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+      WhatsApp Us
+    </a>
+  </div>
+</div>
 
 <section class="hero" id="top">
   <div class="container hero-grid">
     <div class="hero-copy">
       <span class="eyebrow">81 Heugh Rd, Walmer, Port Elizabeth</span>
-      <h1>Full-speed play by day, a <span class="accent">real bed</span> for <span class="accent2">sleepovers</span>.</h1>
+      <h1>Premium daycare and <span class="accent">pet hotel</span>. A real <span class="accent2">home away from home</span>.</h1>
       <p class="hero-sub">Daycare, splash-pool play and boarded sleepovers for local dogs, run by people who actually love having them around. No kennels, no cage stacking, hands-on handlers, all day.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://wa.me/27824839046" target="_blank" rel="noopener">
@@ -214,8 +239,8 @@
       <img src="assets/zoomies-grooming-van.jpg" alt="The Zoomies Mobile Pet Grooming van" />
       <div class="grooming-copy">
         <span class="eyebrow">Zoomies Mobile Pet Grooming</span>
-        <h2>The groom truck comes to your driveway. Or book it while they're here.</h2>
-        <p>A wash, cut and pamper without leaving home &mdash; the mobile grooming van parks right outside your door. Already dropping your dog at the Club? Ask us to book their groom for the same day.</p>
+        <h2>The groom truck comes straight to your driveway.</h2>
+        <p>A wash, cut and pamper without leaving home, the mobile grooming van parks right outside your door. Already dropping your dog at the Club for the day? Ask us to book their groom for while they're with us.</p>
         <a class="btn btn-outline" href="https://wa.me/27774018526" target="_blank" rel="noopener">WhatsApp Grooming: 077 401 8526</a>
       </div>
     </div>
@@ -227,13 +252,13 @@
     <div class="section-head reveal">
       <span class="eyebrow">The regulars</span>
       <h2>A few faces you'll get to know</h2>
-      <p>Some of the dogs who show up week after week, and the handlers who know exactly how they like their playtime.</p>
+      <p>Some of the dogs who show up week after week, back for more zoomies every time.</p>
     </div>
     <div class="pack-grid stagger">
-      <figure class="pack-card"><img src="assets/zoomies-club-dog-sandwich.jpg" alt="Sandwich" /><figcaption>Sandwich</figcaption></figure>
-      <figure class="pack-card"><img src="assets/zoomies-club-dog-jack.jpg" alt="Jack" /><figcaption>Jack</figcaption></figure>
-      <figure class="pack-card"><img src="assets/zoomies-club-dog-boog.jpg" alt="Boog" /><figcaption>Boog</figcaption></figure>
-      <figure class="pack-card"><img src="assets/zoomies-club-dog-luna.jpg" alt="Luna" /><figcaption>Luna</figcaption></figure>
+      <figure class="pack-card"><img src="assets/zoomies-club-dog-sandwich.jpg" alt="Sandwich" /></figure>
+      <figure class="pack-card"><img src="assets/zoomies-club-dog-jack.jpg" alt="Jack" /></figure>
+      <figure class="pack-card"><img src="assets/zoomies-club-dog-boog.jpg" alt="Boog" /></figure>
+      <figure class="pack-card"><img src="assets/zoomies-club-dog-luna.jpg" alt="Luna" /></figure>
     </div>
     <div class="pack-cta reveal">
       <a class="btn btn-outline on-light" href="pack.html">Meet the Whole Pack</a>
