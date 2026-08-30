@@ -49,14 +49,6 @@ img { max-width: 100%; display: block; }
 .stagger.in-view > * { opacity: 1; transform: none; }
 
 @keyframes settle { to { opacity: 1; transform: none; } }
-@keyframes streak-run { 0% { stroke-dashoffset: 240; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
-
-/* Motion streaks: the burst of energy behind a dog mid-zoomies, not a sleep motif */
-.zoom-streaks { position: absolute; pointer-events: none; user-select: none; z-index: 1; }
-.zoom-streaks path { fill: none; stroke: var(--cyan); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 120; stroke-dashoffset: 120; opacity: 0; }
-.zoom-streaks.run path { animation: streak-run 2.6s cubic-bezier(0.3,0.6,0.3,1) infinite; }
-.zoom-streaks path:nth-child(2) { animation-delay: 0.35s; stroke: var(--pink); }
-.zoom-streaks path:nth-child(3) { animation-delay: 0.7s; }
 
 /* ===== Buttons ===== */
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 1.05rem; border: 2.5px solid var(--ink); border-radius: 999px; cursor: pointer; transition: transform 0.15s cubic-bezier(0.2,0.9,0.3,1.4), box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease; text-decoration: none; white-space: nowrap; }
@@ -109,19 +101,6 @@ img { max-width: 100%; display: block; }
   .header-cta .cta-short { display: inline; }
   .brand-word { font-size: 1rem; }
 }
-
-/* ===== Paw-trail divider: a dog's path caught mid-zoomies ===== */
-.paw-divider { height: 54px; background: var(--tint); position: relative; overflow: hidden; border-bottom: 3px solid var(--ink); display: flex; align-items: center; }
-.paw-divider svg { width: 100%; height: 40px; display: block; overflow: visible; }
-.paw-divider path.trail { fill: none; stroke: var(--tint-line); stroke-width: 2; }
-.paw-divider .paw { opacity: 0; transform-origin: center; }
-.paw-divider.in-view .paw { animation: paw-step 2.4s cubic-bezier(0.3,0.6,0.3,1) infinite; }
-.paw-divider.in-view .paw:nth-child(2) { animation-delay: 0.15s; }
-.paw-divider.in-view .paw:nth-child(3) { animation-delay: 0.3s; }
-.paw-divider.in-view .paw:nth-child(4) { animation-delay: 0.45s; }
-.paw-divider.in-view .paw:nth-child(5) { animation-delay: 0.6s; }
-.paw-divider.in-view .paw:nth-child(6) { animation-delay: 0.75s; }
-@keyframes paw-step { 0% { opacity: 0; transform: translateY(6px) scale(0.6); } 20% { opacity: 1; transform: translateY(0) scale(1); } 70% { opacity: 1; } 100% { opacity: 0; transform: translateY(-4px) scale(0.85); } }
 
 /* ===== Trust band ===== */
 .trust { background: var(--ink); padding: 40px 0; }

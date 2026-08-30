@@ -29,23 +29,22 @@
 
   /* ===== Staff section ===== */
   .staff { padding: 76px 0 70px; background: var(--white); }
-  .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .staff-card { border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; aspect-ratio: 4/5; }
-  .staff-card img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
-  .staff-card figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 16px; background: linear-gradient(to top, rgba(10,21,24,0.94), transparent); color: var(--white); }
-  .staff-card figcaption strong { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 1.15rem; display: block; }
-  .staff-card figcaption span { font-size: 0.82rem; color: #b8ccce; }
-  @media (max-width: 880px) { .staff-grid { grid-template-columns: 1fr; } }
+  .staff-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+  .staff-card { border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; aspect-ratio: 3/4; }
+  .staff-card img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+  .staff-card figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 10px 12px; background: linear-gradient(to top, rgba(10,21,24,0.92), transparent); color: var(--white); text-align: center; }
+  .staff-card figcaption strong { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.98rem; display: block; }
+  @media (max-width: 980px) { .staff-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .staff-grid { grid-template-columns: repeat(2, 1fr); } }
 
   /* ===== Venue strip ===== */
   .venue { padding: 8px 0 76px; background: var(--white); }
   .venue-grid { display: flex; flex-direction: column; gap: 18px; }
-  .venue-grid .wide { margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; height: 320px; }
+  .venue-grid .wide { margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); height: 320px; }
   .venue-grid .wide img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .venue-side { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .venue-side figure { margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; height: 220px; }
+  .venue-side figure { margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); height: 220px; }
   .venue-side img { width: 100%; height: 100%; object-fit: cover; }
-  .venue-side figcaption, .venue-grid .wide figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(10,21,24,0.82); color: var(--white); padding: 5px 12px; border-radius: 999px; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.78rem; }
   @media (max-width: 780px) { .venue-grid .wide { height: 220px; } .venue-side { grid-template-columns: 1fr; } .venue-side figure { height: 180px; } }
 </style>
 </head>
@@ -73,11 +72,6 @@
 </header>
 
 <section class="page-hero">
-  <svg class="zoom-streaks" style="top: 24px; right: 6%; width: 110px; height: 76px;" viewBox="0 0 130 90">
-    <path d="M5 70 Q 40 60, 60 40 T 120 15" />
-    <path d="M0 45 Q 35 40, 55 22 T 110 5" />
-    <path d="M15 85 Q 45 75, 68 55 T 125 35" />
-  </svg>
   <div class="container page-hero-grid">
     <div>
       <span class="eyebrow">The regulars</span>
@@ -86,18 +80,6 @@
     </div>
   </div>
 </section>
-
-<div class="paw-divider" id="pawDivider">
-  <svg viewBox="0 0 400 30" preserveAspectRatio="xMidYMid meet">
-    <path class="trail" d="M10 22 Q 100 6, 200 18 T 390 10" />
-    <g class="paw" transform="translate(24,14) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
-    <g class="paw" transform="translate(95,8) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
-    <g class="paw" transform="translate(166,18) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
-    <g class="paw" transform="translate(238,7) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
-    <g class="paw" transform="translate(308,16) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
-    <g class="paw" transform="translate(378,9) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
-  </svg>
-</div>
 
 <section class="dogs">
   <div class="container">
@@ -151,16 +133,28 @@
     </div>
     <div class="staff-grid stagger">
       <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-gcinile.jpg" alt="Gcinile, a Zoomies Club handler" />
-        <figcaption><strong>Gcinile</strong><span>Zoomies Club handler</span></figcaption>
+        <img src="assets/zoomies-club-staff-gcinile.jpg" alt="Gcinile, Zoomies Club staff" />
+        <figcaption><strong>Gcinile</strong></figcaption>
       </figure>
       <figure class="staff-card">
-        <img src="assets/zoomies-club-owner-catcap.jpg" alt="A Zoomies Club handler with a beagle in the play yard" />
-        <figcaption><strong>On the yard, every day</strong><span>Playtime supervision</span></figcaption>
+        <img src="assets/zoomies-club-staff-dianne.jpg" alt="Di-Anne, Zoomies Club staff" />
+        <figcaption><strong>Di-Anne</strong></figcaption>
       </figure>
       <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-venue-2.jpg" alt="A Zoomies Club handler with a puppy on the front lawn" />
-        <figcaption><strong>Hands-on from day one</strong><span>Arrivals, hand-offs, playtime</span></figcaption>
+        <img src="assets/zoomies-club-staff-chris.jpg" alt="Chris, Zoomies Club staff" />
+        <figcaption><strong>Chris</strong></figcaption>
+      </figure>
+      <figure class="staff-card">
+        <img src="assets/zoomies-club-staff-casey.jpg" alt="Casey, Zoomies Club staff" />
+        <figcaption><strong>Casey</strong></figcaption>
+      </figure>
+      <figure class="staff-card">
+        <img src="assets/zoomies-club-staff-thandeka.jpg" alt="Thandeka, Zoomies Club staff" />
+        <figcaption><strong>Thandeka</strong></figcaption>
+      </figure>
+      <figure class="staff-card">
+        <img src="assets/zoomies-club-staff-palesa.jpg" alt="Palesa, Zoomies Club staff" />
+        <figcaption><strong>Palesa</strong></figcaption>
       </figure>
     </div>
   </div>
@@ -176,16 +170,13 @@
     <div class="venue-grid reveal">
       <figure class="wide">
         <img src="assets/zoomies-club-gate-only.jpg" alt="The Zoomies Club front gate at 81 Heugh Road, painted with their mascot" />
-        <figcaption>The front gate</figcaption>
       </figure>
       <div class="venue-side">
         <figure>
           <img src="assets/zoomies-club-toy-shelf.jpg" alt="A shelf of dog toys at Zoomies Club" />
-          <figcaption>Toy shelf</figcaption>
         </figure>
         <figure>
           <img src="assets/zoomies-club-rope-toys.jpg" alt="A rack of rope toys and treats at Zoomies Club" />
-          <figcaption>Toys &amp; treats</figcaption>
         </figure>
       </div>
     </div>
