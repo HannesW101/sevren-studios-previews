@@ -19,7 +19,7 @@
   .dog-card { background: var(--white); border: 3px solid var(--ink); border-radius: var(--radius); overflow: hidden; box-shadow: 6px 6px 0 rgba(0,0,0,0.9); transition: transform 0.2s cubic-bezier(0.2,0.9,0.3,1.3), box-shadow 0.2s ease; }
   .dog-card:hover { transform: translate(-3px, -3px) rotate(-0.5deg); box-shadow: 9px 9px 0 rgba(0,0,0,0.9); }
   .dog-photo { aspect-ratio: 1/1; overflow: hidden; position: relative; border-bottom: 3px solid var(--ink); }
-  .dog-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .dog-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
   .dog-info { padding: 16px 18px 20px; }
   .dog-info h3 { font-size: 1.35rem; display: flex; align-items: center; gap: 8px; }
   .dog-info h3 .paw { color: var(--pink); font-size: 1rem; }
@@ -31,7 +31,7 @@
   .staff { padding: 76px 0 70px; background: var(--white); }
   .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .staff-card { border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; aspect-ratio: 4/5; }
-  .staff-card img { width: 100%; height: 100%; object-fit: cover; }
+  .staff-card img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
   .staff-card figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 16px; background: linear-gradient(to top, rgba(10,21,24,0.94), transparent); color: var(--white); }
   .staff-card figcaption strong { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 1.15rem; display: block; }
   .staff-card figcaption span { font-size: 0.82rem; color: #b8ccce; }
@@ -39,17 +39,14 @@
 
   /* ===== Venue strip ===== */
   .venue { padding: 8px 0 76px; background: var(--white); }
-  .venue-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
-  .venue-grid .tall { grid-row: span 2; }
-  .venue-figures { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
-  .venue-figures figure { margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); }
-  .venue-figures img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .venue-side { display: flex; flex-direction: column; gap: 18px; }
-  .venue-side figure { flex: 1; margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); }
+  .venue-grid { display: flex; flex-direction: column; gap: 18px; }
+  .venue-grid .wide { margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; height: 320px; }
+  .venue-grid .wide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .venue-side { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .venue-side figure { margin: 0; border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); position: relative; height: 220px; }
   .venue-side img { width: 100%; height: 100%; object-fit: cover; }
-  .venue-main { border-radius: var(--radius); overflow: hidden; border: 3px solid var(--ink); }
-  .venue-main img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 480px; }
-  @media (max-width: 780px) { .venue-figures { grid-template-columns: 1fr; } }
+  .venue-side figcaption, .venue-grid .wide figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(10,21,24,0.82); color: var(--white); padding: 5px 12px; border-radius: 999px; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.78rem; }
+  @media (max-width: 780px) { .venue-grid .wide { height: 220px; } .venue-side { grid-template-columns: 1fr; } .venue-side figure { height: 180px; } }
 </style>
 </head>
 <body>
@@ -76,21 +73,29 @@
 </header>
 
 <section class="page-hero">
-  <div class="zzz" style="top: 30px; right: 8%; font-size: 2rem;"><span>Z</span><span>z</span><span>z</span></div>
+  <svg class="zoom-streaks" style="top: 24px; right: 6%; width: 110px; height: 76px;" viewBox="0 0 130 90">
+    <path d="M5 70 Q 40 60, 60 40 T 120 15" />
+    <path d="M0 45 Q 35 40, 55 22 T 110 5" />
+    <path d="M15 85 Q 45 75, 68 55 T 125 35" />
+  </svg>
   <div class="container page-hero-grid">
     <div>
       <span class="eyebrow">The regulars</span>
       <h1>Meet the pack.</h1>
-      <p>These are real dogs who come through Zoomies Club, not stock photos. Every one of them has a name we use, a personality we know, and a spot waiting for them.</p>
+      <p>Some of the dogs who show up week after week, and the people who look after them.</p>
     </div>
   </div>
 </section>
 
-<div class="ripple-divider" id="rippleDivider">
-  <svg viewBox="0 0 400 46" preserveAspectRatio="none">
-    <circle class="ring" cx="70" cy="23" r="4" />
-    <circle class="ring ring2" cx="200" cy="23" r="4" />
-    <circle class="ring ring3" cx="330" cy="23" r="4" />
+<div class="paw-divider" id="pawDivider">
+  <svg viewBox="0 0 400 30" preserveAspectRatio="xMidYMid meet">
+    <path class="trail" d="M10 22 Q 100 6, 200 18 T 390 10" />
+    <g class="paw" transform="translate(24,14) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(95,8) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(166,18) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(238,7) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(308,16) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(378,9) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
   </svg>
 </div>
 
@@ -122,10 +127,6 @@
         <div class="dog-info"><h3>Alex <span class="paw">&#9679;</span></h3><p>Border collie brains. First one in the pool, every time.</p></div>
       </div>
       <div class="dog-card">
-        <div class="dog-photo"><img src="assets/zoomies-club-dog-diesel.jpg" alt="Diesel, a tan and white puppy regular at Zoomies Club" /></div>
-        <div class="dog-info"><h3>Diesel <span class="paw">&#9679;</span></h3><p>Still growing into those ears. Everyone's favourite puppy.</p></div>
-      </div>
-      <div class="dog-card">
         <div class="dog-photo"><img src="assets/zoomies-club-dog-boog.jpg" alt="Boog, a small scruffy puppy regular at Zoomies Club" /></div>
         <div class="dog-info"><h3>Boog <span class="paw">&#9679;</span></h3><p>Smallest in the yard, loudest opinions about nap time.</p></div>
       </div>
@@ -150,16 +151,16 @@
     </div>
     <div class="staff-grid stagger">
       <figure class="staff-card">
+        <img src="assets/zoomies-club-staff-gcinile.jpg" alt="Gcinile, a Zoomies Club handler" />
+        <figcaption><strong>Gcinile</strong><span>Zoomies Club handler</span></figcaption>
+      </figure>
+      <figure class="staff-card">
         <img src="assets/zoomies-club-owner-catcap.jpg" alt="A Zoomies Club handler with a beagle in the play yard" />
-        <figcaption><strong>Yard Duty</strong><span>Playtime supervision, every session</span></figcaption>
+        <figcaption><strong>On the yard, every day</strong><span>Playtime supervision</span></figcaption>
       </figure>
       <figure class="staff-card">
         <img src="assets/zoomies-club-staff-venue-2.jpg" alt="A Zoomies Club handler with a puppy on the front lawn" />
-        <figcaption><strong>Front Desk &amp; Pickup</strong><span>Arrivals, hand-offs, the daily schedule</span></figcaption>
-      </figure>
-      <figure class="staff-card">
-        <img src="assets/zoomies-club-staff-labrador-real.jpg" alt="A Zoomies Club handler with two Dobermans in the garden" />
-        <figcaption><strong>Hotel &amp; Sleepovers</strong><span>Overnight care, feeding, medications sorted</span></figcaption>
+        <figcaption><strong>Hands-on from day one</strong><span>Arrivals, hand-offs, playtime</span></figcaption>
       </figure>
     </div>
   </div>
@@ -172,8 +173,21 @@
       <h2>81 Heugh Road, Walmer</h2>
       <p>A real home base with a real yard, not a warehouse of crates.</p>
     </div>
-    <div class="venue-main reveal">
-      <img src="assets/zoomies-club-gate-real.jpg" alt="The Zoomies Club front gate at 81 Heugh Road, painted with their ZZ mascot mural" />
+    <div class="venue-grid reveal">
+      <figure class="wide">
+        <img src="assets/zoomies-club-gate-only.jpg" alt="The Zoomies Club front gate at 81 Heugh Road, painted with their mascot" />
+        <figcaption>The front gate</figcaption>
+      </figure>
+      <div class="venue-side">
+        <figure>
+          <img src="assets/zoomies-club-toy-shelf.jpg" alt="A shelf of dog toys at Zoomies Club" />
+          <figcaption>Toy shelf</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/zoomies-club-rope-toys.jpg" alt="A rack of rope toys and treats at Zoomies Club" />
+          <figcaption>Toys &amp; treats</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -186,11 +200,11 @@
   </div>
 </div>
 
-<section class="cta-banner" style="background: var(--cyan); padding: 60px 0; text-align: center;">
+<section class="cta-banner">
   <div class="container reveal">
-    <h2 style="font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--ink);">Want your dog on this page?</h2>
-    <p style="color: var(--ink-soft); max-width: 480px; margin: 14px auto 26px;">Book their first day and they'll be running the yard in no time.</p>
-    <a class="btn btn-primary" href="https://wa.me/27824839046" target="_blank" rel="noopener">Book a Spot on WhatsApp</a>
+    <h2>Want your dog on this page?</h2>
+    <p>Book their first day and they'll be running the yard in no time.</p>
+    <a class="btn btn-light" href="https://wa.me/27824839046" target="_blank" rel="noopener">Book a Spot on WhatsApp</a>
   </div>
 </section>
 

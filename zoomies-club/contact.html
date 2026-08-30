@@ -34,6 +34,11 @@
   .hours-row .time { color: #b8ccce; font-family: 'IBM Plex Mono', monospace; }
 
   @media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  /* This page's main CTA gets a softer lift instead of the hard-shadow jump used elsewhere */
+  .whatsapp-cta { transition: transform 0.2s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.2s ease, background 0.2s ease; }
+  .whatsapp-cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 28px rgba(0,217,224,0.35); background: var(--cyan-bright); }
+  .whatsapp-cta:active { transform: translateY(-1px) scale(1); }
 </style>
 </head>
 <body>
@@ -60,7 +65,11 @@
 </header>
 
 <section class="page-hero">
-  <div class="zzz" style="top: 30px; right: 8%; font-size: 2rem;"><span>Z</span><span>z</span><span>z</span></div>
+  <svg class="zoom-streaks" style="top: 24px; right: 6%; width: 110px; height: 76px;" viewBox="0 0 130 90">
+    <path d="M5 70 Q 40 60, 60 40 T 120 15" />
+    <path d="M0 45 Q 35 40, 55 22 T 110 5" />
+    <path d="M15 85 Q 45 75, 68 55 T 125 35" />
+  </svg>
   <div class="container">
     <span class="eyebrow">Come say hi</span>
     <h1>Book your dog's first day.</h1>
@@ -68,11 +77,15 @@
   </div>
 </section>
 
-<div class="ripple-divider" id="rippleDivider">
-  <svg viewBox="0 0 400 46" preserveAspectRatio="none">
-    <circle class="ring" cx="70" cy="23" r="4" />
-    <circle class="ring ring2" cx="200" cy="23" r="4" />
-    <circle class="ring ring3" cx="330" cy="23" r="4" />
+<div class="paw-divider" id="pawDivider">
+  <svg viewBox="0 0 400 30" preserveAspectRatio="xMidYMid meet">
+    <path class="trail" d="M10 22 Q 100 6, 200 18 T 390 10" />
+    <g class="paw" transform="translate(24,14) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(95,8) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(166,18) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(238,7) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(308,16) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(378,9) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
   </svg>
 </div>
 
@@ -102,7 +115,7 @@
         <div class="hours-row"><span class="day">Open</span><span class="time">7 Days a Week</span></div>
       </div>
       <div style="margin-top: 26px;">
-        <a class="btn btn-primary" href="https://wa.me/27824839046" target="_blank" rel="noopener">
+        <a class="btn btn-primary whatsapp-cta" href="https://wa.me/27824839046" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2z"/></svg>
           Message Us on WhatsApp
         </a>

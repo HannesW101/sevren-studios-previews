@@ -34,13 +34,14 @@
   .hero-badge-glow { position: absolute; width: 340px; height: 340px; background: radial-gradient(circle, rgba(0,217,224,0.4), transparent 70%); filter: blur(12px); }
   .hero-badge-wrap img { position: relative; width: 100%; max-width: 320px; aspect-ratio: 1/1; object-fit: cover; border-radius: 50%; border: 4px solid var(--cyan); filter: drop-shadow(0 22px 40px rgba(0,0,0,0.5)); }
 
-  /* ===== Bento intro strip: real photos, torn-paper energy ===== */
-  .bento { position: relative; z-index: 2; }
-  .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 0 0 0; transform: translateY(30px); }
-  .bento-grid figure { margin: 0; border-radius: var(--radius-sm); overflow: hidden; border: 3px solid var(--ink); aspect-ratio: 4/5; position: relative; box-shadow: 6px 6px 0 rgba(0,0,0,0.35); }
-  .bento-grid img { width: 100%; height: 100%; object-fit: cover; }
-  .bento-grid figure:nth-child(1) img { object-position: 50% 65%; }
-  @media (max-width: 880px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+  /* ===== Photo wall: real photos, curated crops, deliberate captions ===== */
+  .photo-wall { position: relative; z-index: 2; }
+  .photo-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 230px 230px; gap: 16px; transform: translateY(30px); }
+  .photo-grid figure { margin: 0; border-radius: var(--radius-sm); overflow: hidden; border: 3px solid var(--ink); position: relative; box-shadow: 6px 6px 0 rgba(0,0,0,0.35); }
+  .photo-grid figure:first-child { grid-row: span 2; }
+  .photo-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-grid figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(10,21,24,0.82); color: var(--white); padding: 6px 14px; border-radius: 999px; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.82rem; }
+  @media (max-width: 880px) { .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 190px 190px 190px; } .photo-grid figure:first-child { grid-row: span 1; grid-column: span 2; } }
 
   /* ===== Services ===== */
   .services { padding: 96px 0 66px; background: var(--tint); }
@@ -72,15 +73,10 @@
   .pack-cta { text-align: center; margin-top: 36px; }
   @media (max-width: 780px) { .pack-grid { grid-template-columns: repeat(2, 1fr); } }
 
-  /* ===== CTA banner ===== */
-  .cta-banner { background: var(--pink); padding: 60px 0; text-align: center; position: relative; overflow: hidden; }
-  .cta-banner h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--white); }
-  .cta-banner p { color: #ffe0ee; max-width: 480px; margin: 14px auto 26px; }
-
   @media (max-width: 880px) {
     .hero-grid { grid-template-columns: 1fr; padding-bottom: 40px; }
     .hero-badge-wrap { order: -1; }
-    .bento-grid { transform: none; padding: 20px 0; }
+    .photo-grid { transform: none; padding: 20px 0; }
     .service-grid { grid-template-columns: 1fr; }
     .trust-inner { gap: 28px; }
   }
@@ -110,13 +106,15 @@
 </header>
 
 <section class="hero" id="top">
-  <div class="zzz" style="top: 50px; right: 6%; font-size: 2.6rem;">
-    <span>Z</span><span>z</span><span>z</span>
-  </div>
+  <svg class="zoom-streaks" style="top: 90px; right: 4%; width: 130px; height: 90px;" viewBox="0 0 130 90">
+    <path d="M5 70 Q 40 60, 60 40 T 120 15" />
+    <path d="M0 45 Q 35 40, 55 22 T 110 5" />
+    <path d="M15 85 Q 45 75, 68 55 T 125 35" />
+  </svg>
   <div class="container hero-grid">
     <div class="hero-copy">
       <span class="eyebrow">81 Heugh Rd, Walmer, Port Elizabeth</span>
-      <h1>Where dogs go to run <span class="accent">absolutely wild</span>, then <span class="accent2">sleep it off</span>.</h1>
+      <h1>Full-speed play by day, a <span class="accent">real bed</span> for <span class="accent2">sleepovers</span>.</h1>
       <p class="hero-sub">Daycare, splash-pool play and boarded sleepovers for local dogs, run by people who actually love having them around. No kennels, no cage stacking, hands-on handlers, all day.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://wa.me/27824839046" target="_blank" rel="noopener">
@@ -136,21 +134,26 @@
       <img src="assets/zoomies-club-logo.jpg" alt="Zoomies Club badge logo" />
     </div>
   </div>
-  <div class="container bento">
-    <div class="bento-grid stagger">
-      <figure><img src="assets/zoomies-club-pool-real.jpg" alt="Dogs splashing in the pool at Zoomies Club with a handler" /></figure>
-      <figure><img src="assets/zoomies-club-gate-real.jpg" alt="The real Zoomies Club front gate with their painted ZZ mascot mural" style="object-position: center 78%;" /></figure>
-      <figure><img src="assets/zoomies-club-dog-alex.jpg" alt="Alex, a regular border collie at Zoomies Club, poolside" /></figure>
-      <figure><img src="assets/zoomies-club-staff-bed.jpg" alt="A handler cuddling four small regulars at Zoomies Club" /></figure>
+  <div class="container photo-wall">
+    <div class="photo-grid stagger">
+      <figure><img src="assets/zoomies-club-pool-real.jpg" alt="Dogs splashing in the pool at Zoomies Club with a handler" style="object-position: center 60%;" /><figcaption>Pool days</figcaption></figure>
+      <figure><img src="assets/zoomies-club-dog-alex.jpg" alt="Alex, a regular border collie at Zoomies Club, poolside" /><figcaption>Alex, a regular</figcaption></figure>
+      <figure><img src="assets/zoomies-club-staff-bed.jpg" alt="A handler cuddling four small regulars at Zoomies Club" /><figcaption>Naptime cuddles</figcaption></figure>
+      <figure><img src="assets/zoomies-club-gate-only.jpg" alt="The real Zoomies Club front gate at 81 Heugh Road, painted with their mascot" /><figcaption>81 Heugh Rd</figcaption></figure>
+      <figure><img src="assets/zoomies-club-toy-shelf.jpg" alt="A shelf of dog toys at the Zoomies Club shop" /><figcaption>The toy shelf</figcaption></figure>
     </div>
   </div>
 </section>
 
-<div class="ripple-divider" id="rippleDivider">
-  <svg viewBox="0 0 400 46" preserveAspectRatio="none">
-    <circle class="ring" cx="70" cy="23" r="4" />
-    <circle class="ring ring2" cx="200" cy="23" r="4" />
-    <circle class="ring ring3" cx="330" cy="23" r="4" />
+<div class="paw-divider" id="pawDivider">
+  <svg viewBox="0 0 400 30" preserveAspectRatio="xMidYMid meet">
+    <path class="trail" d="M10 22 Q 100 6, 200 18 T 390 10" />
+    <g class="paw" transform="translate(24,14) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(95,8) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(166,18) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(238,7) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(308,16) scale(0.9)" fill="var(--pink)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
+    <g class="paw" transform="translate(378,9) scale(0.9)" fill="var(--cyan-deep)"><ellipse cx="0" cy="2" rx="4.4" ry="3.6"/><ellipse cx="-4.5" cy="-3" rx="1.7" ry="2.1"/><ellipse cx="-1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="1.6" cy="-5.5" rx="1.7" ry="2.1"/><ellipse cx="4.5" cy="-3" rx="1.7" ry="2.1"/></g>
   </svg>
 </div>
 
@@ -186,9 +189,9 @@
     <div class="grooming-card reveal">
       <img src="assets/zoomies-grooming-van.jpg" alt="The Zoomies Mobile Pet Grooming van" />
       <div class="grooming-copy">
-        <span class="eyebrow">Also part of the Zoomies family</span>
-        <h2>Need a groom too? We come to you.</h2>
-        <p>Zoomies Mobile Pet Grooming brings the wash, cut and pamper straight to your driveway. Same Zoomies crew, a different truck.</p>
+        <span class="eyebrow">Zoomies Mobile Pet Grooming</span>
+        <h2>The groom truck comes to your driveway. Or book it while they're here.</h2>
+        <p>A wash, cut and pamper without leaving home &mdash; the mobile grooming van parks right outside your door. Already dropping your dog at the Club? Ask us to book their groom for the same day.</p>
         <a class="btn btn-outline" href="https://wa.me/27774018526" target="_blank" rel="noopener">WhatsApp Grooming: 077 401 8526</a>
       </div>
     </div>
@@ -200,7 +203,7 @@
     <div class="section-head reveal">
       <span class="eyebrow">The regulars</span>
       <h2>A few faces you'll get to know</h2>
-      <p>Every dog at Zoomies Club has a name we actually use, not a kennel number.</p>
+      <p>Some of the dogs who show up week after week, and the handlers who know exactly how they like their playtime.</p>
     </div>
     <div class="pack-grid stagger">
       <figure class="pack-card"><img src="assets/zoomies-club-dog-sandwich.jpg" alt="Sandwich" /><figcaption>Sandwich</figcaption></figure>
@@ -226,7 +229,7 @@
   <div class="container reveal">
     <h2>Ready for your dog's first day?</h2>
     <p>Message us on WhatsApp and we'll sort out the right plan for your dog.</p>
-    <a class="btn" style="background: var(--white); color: var(--pink-deep); box-shadow: var(--shadow-hard);" href="https://wa.me/27824839046" target="_blank" rel="noopener">Book a Spot on WhatsApp</a>
+    <a class="btn btn-light" href="https://wa.me/27824839046" target="_blank" rel="noopener">Book a Spot on WhatsApp</a>
   </div>
 </section>
 

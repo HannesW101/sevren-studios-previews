@@ -10,13 +10,13 @@
 
   document.querySelectorAll('.reveal, .stagger').forEach(function (el) { observer.observe(el); });
 
-  document.querySelectorAll('.ripple-divider').forEach(function (ripple) {
-    var rippleObserver = new IntersectionObserver(function (entries) {
+  document.querySelectorAll('.paw-divider, .zoom-streaks').forEach(function (el) {
+    var motionObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) ripple.classList.add('in-view');
+        if (entry.isIntersecting) el.classList.add(el.classList.contains('zoom-streaks') ? 'run' : 'in-view');
       });
     }, { threshold: 0.3 });
-    rippleObserver.observe(ripple);
+    motionObserver.observe(el);
   });
 
   var path = window.location.pathname.split('/').pop() || 'index.html';
