@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+<title>Zoomies Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0d1b1e;
+    --ink-panel: #122326;
+    --cyan: #00d9e0;
+    --cyan-deep: #00b8c4;
+    --pink: #ff3d8a;
+    --white: #ffffff;
+    --tint: #eefcfc;
+    --tint-line: #d7f2f2;
+    --text: #17282b;
+    --text-soft: #4b6265;
+    --radius: 18px;
+    --radius-sm: 10px;
+    --max-width: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Baloo 2', sans-serif; font-weight: 700; line-height: 1.02; margin: 0; color: var(--ink); text-wrap: balance; }
+  p { margin: 0 0 1em; color: var(--text-soft); max-width: 58ch; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 28px; }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+  .eyebrow { font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan-deep); margin-bottom: 10px; display: block; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .hero-copy > *, .hero-badge-wrap, .zzz span { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ===== Hero entrance ===== */
+  .hero-copy > * { opacity: 0; transform: translateY(16px); animation: settle 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+  .hero-copy .eyebrow { animation-delay: 0.05s; }
+  .hero-copy h1 { animation-delay: 0.15s; }
+  .hero-copy .hero-sub { animation-delay: 0.3s; }
+  .hero-copy .hero-actions { animation-delay: 0.42s; }
+  .hero-copy .facts-row { animation-delay: 0.54s; }
+  .hero-badge-wrap { opacity: 0; transform: translateY(16px) scale(0.96); animation: settle 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; animation-delay: 0.2s; }
+  @keyframes settle { to { opacity: 1; transform: none; } }
+
+  /* ===== Zzz drift: the logo's own sleepy-dog motif, floating ===== */
+  .zzz { position: absolute; font-family: 'Baloo 2', sans-serif; font-weight: 800; color: var(--cyan); pointer-events: none; user-select: none; }
+  .zzz span { display: inline-block; opacity: 0; animation: drift 3.2s ease-in-out infinite; }
+  .zzz span:nth-child(1) { animation-delay: 0.1s; }
+  .zzz span:nth-child(2) { animation-delay: 0.9s; }
+  .zzz span:nth-child(3) { animation-delay: 1.7s; }
+  @keyframes drift { 0% { opacity: 0; transform: translateY(6px) scale(0.8); } 15% { opacity: 0.85; transform: translateY(0) scale(1); } 80% { opacity: 0.5; transform: translateY(-14px) scale(1.05); } 100% { opacity: 0; transform: translateY(-22px) scale(1.1); } }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 1.05rem; border: 2px solid transparent; border-radius: 999px; cursor: pointer; transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; text-decoration: none; }
+  .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .btn-primary { background: var(--cyan); color: var(--ink); box-shadow: 0 6px 0 var(--cyan-deep); }
+  .btn-primary:hover { transform: translateY(2px); box-shadow: 0 4px 0 var(--cyan-deep); }
+  .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.5); }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); }
+  .btn-outline.on-light { color: var(--ink); border-color: var(--ink); }
+  .btn-outline.on-light:hover { background: var(--ink); color: var(--white); }
+
+  /* ===== Header ===== */
+  .site-header { padding: 16px 0; background: var(--white); border-bottom: 1px solid var(--tint-line); position: sticky; top: 0; z-index: 50; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+  .brand img { height: 46px; width: 46px; border-radius: 50%; display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--ink); }
+  .brand-word small { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--cyan-deep); }
+  .header-right { display: flex; align-items: center; gap: 30px; }
+  .nav-links { display: flex; gap: 24px; list-style: none; padding: 0; margin: 0; }
+  .nav-links a { font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.98rem; color: var(--text); text-decoration: none; }
+  .nav-links a:hover { color: var(--cyan-deep); }
+  .header-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--ink); color: var(--white); border-radius: 999px; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+  .header-cta:hover { background: var(--cyan-deep); }
+  .header-cta svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .header-cta .cta-full { display: inline; }
+  .header-cta .cta-short { display: none; }
+  @media (max-width: 780px) { .nav-links { display: none; } }
+  @media (max-width: 420px) {
+    .header-cta { padding: 9px 14px; font-size: 0.88rem; }
+    .header-cta .cta-full { display: none; }
+    .header-cta .cta-short { display: inline; }
+    .brand-word { font-size: 1rem; }
+  }
+
+  /* ===== Hero ===== */
+  .hero { background: var(--ink); color: var(--white); padding: 68px 0 60px; position: relative; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; position: relative; z-index: 2; }
+  .hero-copy .eyebrow { color: var(--cyan); }
+  .hero h1 { font-size: clamp(2.3rem, 4.6vw, 3.4rem); color: var(--white); }
+  .hero h1 .accent { color: var(--cyan); }
+  .hero-sub { color: #b8ccce; font-size: 1.08rem; max-width: 460px; margin: 18px 0 0; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+  .facts-row { display: flex; gap: 0; margin-top: 36px; flex-wrap: wrap; }
+  .fact { padding-right: 26px; margin-right: 26px; border-right: 1px solid rgba(255,255,255,0.16); }
+  .fact:last-child { border-right: none; }
+  .fact .num { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--cyan); display: block; }
+  .fact .label { font-size: 0.76rem; color: #9db3b5; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .hero-badge-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
+  .hero-badge-glow { position: absolute; width: 320px; height: 320px; background: radial-gradient(circle, rgba(0,217,224,0.35), transparent 70%); filter: blur(10px); }
+  .hero-badge-wrap img { position: relative; width: 100%; max-width: 320px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.45)); }
+
+  /* ===== Pool-ripple divider: a real motif from their actual splash pool photo ===== */
+  .ripple-divider { height: 46px; background: var(--tint); position: relative; overflow: hidden; }
+  .ripple-divider svg { width: 100%; height: 100%; display: block; }
+  .ripple-divider .ring { fill: none; stroke: var(--cyan); stroke-width: 1.4; opacity: 0; transform-origin: center; }
+  .ripple-divider.in-view .ring { animation: ripple 2.6s ease-out infinite; }
+  .ripple-divider.in-view .ring2 { animation-delay: 0.9s; }
+  .ripple-divider.in-view .ring3 { animation-delay: 1.8s; }
+  @keyframes ripple { 0% { opacity: 0.7; transform: scale(0.3); } 100% { opacity: 0; transform: scale(2.4); } }
+
+  /* ===== Services ===== */
+  .services { padding: 70px 0 66px; background: var(--tint); }
+  .services-head { max-width: 600px; margin-bottom: 40px; }
+  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .service-card { background: var(--white); border: 1px solid var(--tint-line); border-radius: var(--radius); padding: 26px 24px; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(0,217,224,0.16); }
+  .service-card .icon { width: 46px; height: 46px; border-radius: 50%; background: var(--tint); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .service-card .icon svg { width: 24px; height: 24px; stroke: var(--cyan-deep); }
+  .service-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .service-card p { font-size: 0.92rem; margin: 0; }
+
+  /* ===== Gallery: their real venue ===== */
+  .gallery { padding: 8px 0 70px; background: var(--tint); }
+  .gallery-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 200px 200px; gap: 14px; }
+  .gallery-grid figure { margin: 0; border-radius: var(--radius); overflow: hidden; position: relative; }
+  .gallery-grid figure:first-child { grid-row: span 2; }
+  .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-grid figcaption { position: absolute; left: 14px; bottom: 12px; background: rgba(13,27,30,0.72); color: var(--white); padding: 6px 12px; border-radius: 999px; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.82rem; }
+  @media (max-width: 780px) { .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; } .gallery-grid figure:first-child { grid-row: span 1; grid-column: span 2; } }
+
+  /* ===== Pricing: the real rate card, restyled not reinvented ===== */
+  .pricing { padding: 76px 0 70px; background: var(--white); }
+  .pricing-head { text-align: center; max-width: 620px; margin: 0 auto 44px; }
+  .pricing-head .eyebrow { justify-content: center; }
+  .pricing-head p { margin: 12px auto 0; }
+  .rate-card { background: var(--ink); border-radius: 28px; padding: 40px 8px 8px; position: relative; overflow: hidden; }
+  .rate-card-inner { background: var(--white); border-radius: 22px; padding: 34px 34px 30px; }
+  .rate-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .rate-group h4 { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--white); background: var(--ink); display: inline-block; padding: 7px 16px; border-radius: 999px; margin-bottom: 16px; }
+  .rate-list { list-style: none; margin: 0; padding: 0; }
+  .rate-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-top: 1px dashed var(--tint-line); gap: 10px; }
+  .rate-list li:first-child { border-top: none; }
+  .rate-list .label { font-size: 0.94rem; color: var(--text); }
+  .rate-list .price { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 0.98rem; color: var(--ink); white-space: nowrap; }
+  .rate-list .price.hilite { color: var(--pink); font-weight: 700; }
+  .rate-note { margin-top: 6px; font-size: 0.82rem; color: var(--pink); font-weight: 600; }
+  .rate-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--tint-line); }
+  .rate-foot p { margin: 0; font-size: 0.86rem; }
+  @media (max-width: 880px) { .rate-groups { grid-template-columns: 1fr; gap: 26px; } }
+
+  /* ===== About ===== */
+  .about { padding: 74px 0; background: var(--tint); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-copy h2 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 16px; }
+  .about-photo { border-radius: var(--radius); overflow: hidden; }
+  .about-photo img { width: 100%; height: 380px; object-fit: cover; }
+  .about-badges { display: flex; gap: 14px; margin-top: 22px; flex-wrap: wrap; }
+  .about-badge { display: flex; align-items: center; gap: 10px; background: var(--white); border: 1px solid var(--tint-line); border-radius: 999px; padding: 9px 16px; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.88rem; }
+  .about-badge svg { width: 18px; height: 18px; stroke: var(--cyan-deep); flex-shrink: 0; }
+
+  /* ===== Trust band ===== */
+  .trust { background: var(--ink); padding: 40px 0; }
+  .trust-inner { display: flex; align-items: center; justify-content: center; gap: 44px; flex-wrap: wrap; text-align: center; }
+  .trust-item .mono { display: block; font-size: 0.7rem; color: var(--cyan); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .trust-item strong { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); }
+
+  /* ===== Contact ===== */
+  .contact { background: var(--ink-panel); color: var(--white); padding: 74px 0; position: relative; overflow: hidden; }
+  .contact h2 { color: var(--white); font-size: clamp(2rem, 3.8vw, 2.7rem); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; margin-top: 6px; }
+  .contact-grid > div:first-child p { color: #b8ccce; }
+  .contact-list { list-style: none; padding: 0; margin: 26px 0 0; }
+  .contact-list li { padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.14); }
+  .contact-list li:first-child { border-top: none; padding-top: 0; }
+  .contact-list .label { display: block; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cyan); margin-bottom: 4px; }
+  .contact-list a { font-weight: 600; font-size: 1.06rem; color: var(--white); text-decoration: none; }
+  .contact-list a:hover { color: var(--cyan); }
+  .map-panel { border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .map-panel iframe { width: 100%; height: 320px; border: 0; display: block; }
+
+  .site-footer { background: var(--ink); color: #9db3b5; padding: 22px 0; text-align: center; font-size: 0.82rem; border-top: 1px solid rgba(255,255,255,0.08); }
+
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-badge-wrap { order: -1; }
+    .service-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo img { height: 260px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .trust-inner { gap: 28px; }
+    .gallery-grid { display: grid; }
+  }
+  @media (max-width: 560px) {
+    .facts-row { gap: 14px; }
+    .fact { padding-right: 14px; margin-right: 14px; }
+  }
+
+  /* ===== Reveal on scroll ===== */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.2,0.7,0.2,1), transform 0.6s cubic-bezier(0.2,0.7,0.2,1); }
+  .reveal.in-view { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <img src="assets/logo.jpg" alt="Zoomies Club logo" />
+      <span class="brand-word">Zoomies Club<small>Doggy Daycare + Hotel</small></span>
+    </a>
+    <div class="header-right">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Visit</a></li>
+      </ul>
+      <a class="header-cta" href="https://wa.me/27824839046" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.84c0 4.55-3.71 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.58.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+        <span class="cta-full">WhatsApp Us</span><span class="cta-short">Chat</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="zzz" style="top: 60px; right: 8%; font-size: 2.4rem;">
+    <span>Z</span><span>z</span><span>z</span>
+  </div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Walmer, Port Elizabeth</span>
+      <h1>Where dogs go to run <span class="accent">absolutely wild</span>, then sleep it off.</h1>
+      <p class="hero-sub">Daycare, splash-pool play and boarded sleepovers for local dogs, run by people who actually love having them around. Full days, half days, monthly club membership, the works.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/27824839046" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.84c0 4.55-3.71 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.58.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+          Book a Spot
+        </a>
+        <a class="btn btn-outline" href="#pricing">See Pricing</a>
+      </div>
+      <div class="facts-row">
+        <div class="fact"><span class="num">R140+</span><span class="label">Half day rate</span></div>
+        <div class="fact"><span class="num">15%</span><span class="label">Off for 2+ pets</span></div>
+        <div class="fact"><span class="num">7 days</span><span class="label">A week, sleepovers too</span></div>
+      </div>
+    </div>
+    <div class="hero-badge-wrap">
+      <div class="hero-badge-glow"></div>
+      <img src="assets/logo.jpg" alt="Zoomies Club badge logo" />
+    </div>
+  </div>
+</section>
+
+<div class="ripple-divider" id="rippleDivider">
+  <svg viewBox="0 0 400 46" preserveAspectRatio="none">
+    <circle class="ring" cx="70" cy="23" r="4" />
+    <circle class="ring ring2" cx="200" cy="23" r="4" />
+    <circle class="ring ring3" cx="330" cy="23" r="4" />
+  </svg>
+</div>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Real daycare, real supervision, real sleepovers</h2>
+      <p>No cage stacking, no guesswork. Every dog gets play time, rest time and a person who's actually watching.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Daily Daycare</h3>
+        <p>Full and half-day drop-in play, splash pool included when the weather's on our side. Book one day or every day.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div>
+        <h3>Sleepovers</h3>
+        <p>Overnight stays for Zoomies Club monthly members, week nights and weekends, with daycare play built into the day.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Zoomies Club Hotel</h3>
+        <p>Proper boarding for small and big pets, priced by size, with daycare included at a discount during the stay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <div class="gallery-grid reveal">
+      <figure><img src="assets/venue-mural.jpg" alt="Zoomies Club team and dogs celebrating in the yard, with the club's own ZZ mural painted on the wall" /><figcaption>Our actual yard</figcaption></figure>
+      <figure><img src="assets/team-1.jpg" alt="Zoomies Club staff member with a dog in the play yard" /><figcaption>Our team</figcaption></figure>
+      <figure><img src="assets/team-2.jpg" alt="Zoomies Club staff member holding a whippet at the venue" /><figcaption>Hands-on care</figcaption></figure>
+      <figure><img src="assets/pack.jpg" alt="Collage of many different dogs who attend Zoomies Club" /><figcaption>The regulars</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-head reveal">
+      <span class="eyebrow">Price List 2026</span>
+      <h2>No surprises. Pick what fits your dog's week.</h2>
+      <p>Second pet? Third? Every plan below drops 15% once you've got two or more pets coming along.</p>
+    </div>
+    <div class="rate-card reveal">
+      <div class="rate-card-inner">
+        <div class="rate-groups">
+          <div class="rate-group">
+            <h4>Daily Rates</h4>
+            <ul class="rate-list">
+              <li><span class="label">Full day</span><span class="price">R180</span></li>
+              <li><span class="label">Half day</span><span class="price">R140</span></li>
+            </ul>
+          </div>
+          <div class="rate-group">
+            <h4>Monthly Fees</h4>
+            <ul class="rate-list">
+              <li><span class="label">1 day a week</span><span class="price">R750</span></li>
+              <li><span class="label">2 days a week</span><span class="price">R1,395</span></li>
+              <li><span class="label">3 days a week</span><span class="price">R1,850</span></li>
+              <li><span class="label">Unlimited passes</span><span class="price hilite">R2,250</span></li>
+            </ul>
+            <p class="rate-note">2 or more pets, less 15%</p>
+          </div>
+          <div class="rate-group">
+            <h4>Sleepovers &amp; Hotel</h4>
+            <ul class="rate-list">
+              <li><span class="label">Week days</span><span class="price">R150</span></li>
+              <li><span class="label">Fri / Sat / Sun</span><span class="price">R220&ndash;R250</span></li>
+              <li><span class="label">Hotel, small pets to 15kg</span><span class="price">R250</span></li>
+              <li><span class="label">Hotel, big pets</span><span class="price">R280</span></li>
+            </ul>
+            <p class="rate-note">Sleepovers are for monthly club members</p>
+          </div>
+        </div>
+        <div class="rate-foot">
+          <p><strong>Staying more than 7 days?</strong> Ask about our extended-stay discount.</p>
+          <a class="btn btn-outline on-light" href="https://wa.me/27824839046" target="_blank" rel="noopener">Get a Spot Confirmed</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow">Who's watching your dog</span>
+      <h2>A real team, on-site, all day</h2>
+      <p>Zoomies Club runs out of a proper home base in Walmer, not a warehouse of crates. Dogs get pool time, floor time, nap time and people who know their names, not just their booking number.</p>
+      <div class="about-badges">
+        <div class="about-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Supervised play, all day</div>
+        <div class="about-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Splash pool on-site</div>
+        <div class="about-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Overnight boarding</div>
+      </div>
+    </div>
+    <div class="about-photo reveal">
+      <img src="assets/team-2.jpg" alt="Zoomies Club team member holding a dog at the venue" />
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="container trust-inner">
+    <div class="trust-item"><span class="mono">Est.</span><strong>Local &amp; Independent</strong></div>
+    <div class="trust-item"><span class="mono">Location</span><strong>Walmer, Port Elizabeth</strong></div>
+    <div class="trust-item"><span class="mono">Open</span><strong>7 Days a Week</strong></div>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color: var(--cyan);">Come say hi</span>
+        <h2>Book your dog's first day</h2>
+        <p>Message us on WhatsApp, we'll sort out the right plan for your dog and get you booked in.</p>
+        <ul class="contact-list">
+          <li><span class="label">WhatsApp / Call</span><a href="https://wa.me/27824839046" target="_blank" rel="noopener">082 483 9046</a></li>
+          <li><span class="label">Email</span><a href="mailto:bark@zoomiesgroup.co.za">bark@zoomiesgroup.co.za</a></li>
+          <li><span class="label">Address</span><a href="https://maps.google.com/?q=81+Heugh+Rd,+Walmer,+Port+Elizabeth,+6001" target="_blank" rel="noopener">81 Heugh Rd, Walmer, Port Elizabeth, 6001</a></li>
+        </ul>
+      </div>
+      <div class="map-panel reveal">
+        <iframe src="https://maps.google.com/maps?q=81%20Heugh%20Rd%2C%20Walmer%2C%20Port%20Elizabeth%2C%206001&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Zoomies Club location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    Zoomies Club &middot; Walmer, Port Elizabeth &middot; Site preview by Sevren Studios
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+
+    var ripple = document.getElementById('rippleDivider');
+    if (ripple) {
+      var rippleObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            ripple.classList.add('in-view');
+          }
+        });
+      }, { threshold: 0.3 });
+      rippleObserver.observe(ripple);
+    }
+  })();
+</script>
+
+</body>
+</html>
